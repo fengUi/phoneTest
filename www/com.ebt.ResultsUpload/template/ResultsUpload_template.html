@@ -1,0 +1,60 @@
+<script id="ResultsUpload_template" type="text/x-underscore-template">
+
+<%_.each(obj,function(Item,index){%>
+
+<div class="course">
+    <div class = 'iconCircle c1 fs26'>
+        <%=Item.month%>月
+    </div>
+    <ul class ="refresher">
+        <%_.each(Item.results,function(resultsItem,resultsIndex){%>
+
+        <li class="course_item" 
+            id=course_item_<%=resultsItem.itemindex%> 
+            data-itemIndex=<%=resultsItem.itemindex%> 
+            data-resultsIndex=<%=resultsIndex%>>
+            <div class="link fs24 c2">
+                <div class="c_year p textC">
+                    <%=resultsItem.courseYear%><%=resultsItem.courseYearperiod%>
+                </div>
+                <div class="c_name" 
+                data-itemIndex=<%=resultsItem.itemindex%> 
+                data-resultsIndex=<%=resultsIndex%>>
+                    <%=resultsItem.courseName%>
+                </div>
+                <div class="bg">
+                    <div class="batchName">
+                        批次:
+                                    <%=resultsItem.batchName%>
+                    </div>
+                    <div class="c_time batchTime">
+                        <%
+                        var st=resultsItem.batchStartTime;
+                        
+                        var et=resultsItem.batchEndTime;
+                        var time=et+"至"+st
+
+                        %>
+                        <%=time%>
+                    </div>
+                                        
+                    <div class="c_res">
+                        
+                        <img src="../base/img/choose.ing"  class="choose" alt="" data-dagou="dagou" >
+                        <img src="../base/img/dagou_grey.ing" class="pass_grey" alt=""  data-dagou="dagou">
+                        <img src="../base/img/dagou.ing" alt="" class="pass_state"
+                            data-itemindex=<%=resultsItem.itemindex%>
+                            data-resultsIndex=<%=resultsIndex%>
+                             ></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+        <%})%>
+    </ul>
+</div>
+
+<%})%>
+
+</script>

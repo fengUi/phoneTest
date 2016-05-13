@@ -1,0 +1,207 @@
+<script id="editgroup_template" type="text/x-underscore-template">
+<%
+   function getdate(str){
+       return str.split(' ')[0]
+   }
+%>
+<%
+      function request(paras) {
+      var url = location.href;
+      var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+
+      var returnValue;
+      for (i = 0; i < paraString.length; i++) {
+        var tempParas = paraString[i].split('=')[0];
+        var parasValue = paraString[i].split('=')[1];
+
+        if (tempParas === paras)
+          returnValue = parasValue;
+      }
+
+      if (typeof(returnValue) == "undefined") {
+        return "";
+      } else {
+        return returnValue;
+      }
+
+        }
+   %>
+ <div class="batch_wrap">
+      <div class="batch_info">
+          <div class="batch_item">
+              <div class="bName">
+                  <lable>批次</lable>
+                  <input type="text" class="batchName" value=<%=batchs.batchName%>>
+              </div>
+              <div class="bStart" >
+                 <lable>开始时间</lable>
+                 <div class="trainDateInputStart"><%=getdate(batchs.startTime)%></div>
+              </div>
+             <div class="bEnd" >
+                <lable>结束时间</lable>
+                <div class="trainDateInputEnd"><%=getdate(batchs.endTime)%></div>
+            </div>
+         </div>
+         <%if(request("type")==1){%>
+          <div class="batch_item">
+              <div class="bTeacher">
+                  <lable>教员</lable>
+                  <div class="teach_wrap">
+                      <input type="text" class="batchTeacher" value="">
+                      <div class="teach_list">
+                          <ul class="t_list">
+
+                          </ul>
+                      </div>
+                  </div>
+                  <img class="searchTeach" src="../base/img/u3443.png" data-value="Teach">
+                   <em>(允许添加多个教员)</em>                  
+              </div>
+         </div>
+         <%}else{%>
+          <div class="batch_item">
+              <div class="bTeacher">
+                  <lable>教员</lable>
+                  <div class="teach_wrap">
+                      <input type="text" 
+                      class="batchTeacher" 
+                      readOnly="true"
+                      value=<%_.each(batchs.instructors,function(instructor,i_index){%>
+                          <%=instructor.instructorName%>；
+                        <%})%>
+                      >
+                  </div>
+                   <em>(允许添加多个教员)</em>                  
+              </div>
+         </div>
+         <%}%>
+          <div class="batch_item" id="itemTeacher">
+              <div class="cTeacher">
+                  <lable>已选教员：</lable>
+                  <div class="cteach_wrap">
+                     <ul class="ct_list">
+                        <%_.each(batchs.instructors,function(instructor,i_index){%>
+                         <li>
+                          <%=instructor.instructorName%>
+                         <img data-accountId=<%=instructor.instructorId%> class="delTeacher" src="../base/img/u3341.png">
+                         </li>
+                        
+                        <%})%>
+                     </ul>
+                     
+                  </div>
+                 
+              </div>
+              <div class="completeBatch">修改批次</div>
+         </div>
+        
+       
+      </div>
+      <div class="edit_group">
+           <div class="eg_item">
+               <div class="eg_group">
+                 
+                 <lable>分组</lable>
+                 <input class="GroupsCountValue" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+               </div>
+               <div class="eg_actype">
+                    
+                    <lable>机型</lable>
+
+                    <ul class="actype_list">
+                    
+                      <%_.each(actypes,function(actype_item,a_index){%>
+                           <li data-actype=<%=actype_item.actype%>><%=actype_item.actype%></li>
+                      <%})%>
+                    
+                        
+                    </ul>     
+               </div>
+           </div>
+           <div class="eg_item">
+                <div class="eg_stu">
+                     <lable>组员</lable>
+                     <div class="stu_wrap">
+                        <input class="GroupsStudentValue" type="text" >
+                        <div class="stu_list">
+                            <ul class="s_list">
+
+                            </ul>
+                        </div>
+                     </div>
+                    <img class="searchStudent" src="../base/img/u3443.png" data-value="student">
+               </div>
+               <img class="addGroup" src="../base/img/u3447.png">
+           </div>
+      </div>
+
+ </div>
+ <div class="choosegroup">
+         <div class="cg_title">
+              <span class="cg_total">分组列表 </span>
+         </div> 
+         <div class="cg_detail">
+            <div id="wrapper">
+            <div id="scroller"> 
+            <ul class="cg_list" >
+                <%_.each(batchs.groups,function(groups_item,groups_index){%>
+               
+                <li 
+                  data-groupName=<%=groups_item.groupName%> 
+                  data-groupId=<%=groups_item.groupId%> 
+                  data-actype=<%=groups_item.actype%>
+                  data-value=<%=JSON.stringify(groups_item.students)%>   >
+                    <div class="bg_item">
+                       <span class="bg_actypes"><%=groups_item.actype%></span>
+                       
+                       <div class="bg_name">
+                           <span>分组<%=groups_item.groupName%></span>
+                           <%if(groups_item.status==0){%>
+                           <img class="outGroup" data-groupId=<%=groups_item.groupId%> src="../base/img/u3341.png">
+                           <img class="changeGroup" 
+                              data-groupId=<%=groups_item.groupId%>  
+                              data-group=<%=groups_item.groupId%> 
+                              data-groupName=<%=groups_item.groupName%>
+                              data-groupActype='<%=groups_item.actype%>' 
+                              src="../base/img/u3349.png">
+                            <%}%>
+                       </div>
+                       <div class="bg_stuwrap">
+                           <ul class="bg_stulist">
+                                <%_.each(groups_item.students,function(students_item,students_index){
+                                   %>
+                                        <li class="studentName" 
+                                          data-gId=<%=students_item.gId%> 
+                                          data-groupId=<%=groups_item.groupId%>
+                                          data-studentId=<%=students_item.studentId%>
+                                          data-actype=<%=groups_item.actype%> >
+                                          <%=students_item.studentName%>
+                                           <%if(groups_item.status==0){%>
+                                           <img class="outStudent" 
+                                            data-gId=<%=students_item.gId%> 
+                                            data-groupId=<%=groups_item.groupId%> 
+                                            src="../base/img/u3341.png">
+                                           <img class="changeStudent" 
+                                              data-gId=<%=students_item.gId%>
+                                              data-actype=<%=groups_item.actype%> 
+                                              data-groupId=<%=groups_item.groupId%> 
+                                              data-groupName=<%=groups_item.groupName%>  
+                                              src="../base/img/u3349.png">
+                                           <%}%>
+                                        </li>
+                                    
+                                <%})%>
+                           </ul>
+                       </div>
+                   
+                    </div>
+                </li>
+               
+                <%})%>
+            </ul>
+            </div>
+            </div>
+        </div>
+    </div>  
+    <div class="completeGroup">完成分组</div>
+</script>

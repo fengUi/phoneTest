@@ -1,0 +1,703 @@
+<style type="text/css" media="all">
+	.confirmBtn,.commitBtn{
+		position: absolute;
+		right:0;
+		top:0;
+		padding: 0 18px;
+		color:#319CD0;
+	}
+	.noLessonInfoTip {
+		position: absolute;
+		left: 412px;
+		top: 274px;
+		color: #7c7477;
+		display: none;
+	}
+	.leftTop {
+		left: 0 !important;
+		padding: 0 24px;
+	}
+	.leftTop img {
+		margin-top: 18px !important;
+	}
+	h1 {
+		font-weight: normal !important;
+	}
+	.content {
+		position: relative;
+	}
+	.course_aside {
+		bottom: 0 !important;
+		top: 0 !important;
+	}
+	#subject_wrapper{
+		position: relative;
+		height:573px;
+	}
+	#subject_scroller{
+		position: absolute;
+		top:0;
+		left:0;
+		width:100%;
+	}
+
+	.allSubject {
+		height: 100%
+	}
+	.subjectItem{
+		height:100%;
+		position: relative;
+	}
+	.subjectItem>div{
+		background-color: #FFFFFF;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width:100%;
+	}
+	.subjectTitle {
+		border-bottom: 1px solid #d1d2d4;
+		text-indent: 20px;
+		padding: 15px 0;
+	}
+	.ratmItem {
+		border-bottom: 1px solid #24a9e1;
+		padding: 15px 0;
+		margin-left: 20px;
+		/* margin-right: 20px;
+        text-indent: 20px;
+        */
+	}
+	.ratmItem:last-child{
+		border-bottom:none;
+	}
+	.course_aside li .active {
+		color: #DF8E1B !important;
+	}
+	.sequence {
+		position: relative;
+		height: 100%
+	}
+
+	.sub_aside{
+		width:20%;
+		float:left;
+		height: 100%;
+		background: #fff;
+
+	}
+	.sub_list {
+		padding-left: 10px;
+		position: absolute;
+		z-index: 1;
+		width: 820px;
+		overflow-y: scroll;
+		height: 265px;
+	 }
+	.sub_list li{
+		padding-left: 10px;
+		height: 70px;
+		width: 800px;
+		line-height: 40px;
+		border-bottom:1px solid #ccc;
+	}
+	.group_list {
+		/*height: auto;*/
+		padding-left: 10px;
+		position: absolute;
+		z-index: 1;
+		width: 800px;
+		overflow-y: scroll;
+		height: 280px;
+	}
+	.group_list li{
+		height: auto;
+		padding-left: 10px;
+		height: 70px;
+		width: 800px;
+		line-height: 40px;
+		border-bottom:1px solid #ccc;
+	}
+	.sub_active{
+		/*background: #339cd3;*/
+		/*color: #fff;*/
+
+		border-top: 1px solid #ECB034;
+		color: #fff !important;
+		background: -webkit-linear-gradient(left, #E99417 20%, #B54E09 100%);
+	}
+	.sub_place{
+		/*background: #339cd3;*/
+		/*color: #fff;*/
+		border-top: 1px solid #ECB034;
+		color: #fff !important;
+		background: -webkit-linear-gradient(left, #E99417 20%, #B54E09 100%);
+	}
+	.sub_active span{
+		/*background: #339cd3;*/
+		/*color: #fff;*/
+		width: 50px;
+		line-height: 50px;
+		margin-left: 20px;
+	}
+	.sub_list li:hover{
+		cursor: pointer;
+
+	}
+	.sub_list li span{
+		margin-right: 5px;
+	}
+	.jtas_wrap{
+		width:80%;
+		float:left;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		border-left: 1px solid #ccc;
+
+	}
+	.jtas_list{
+		margin-bottom: 20px;
+	}
+	.jtas_list h3{
+		height: 40px;
+		line-height: 40px;
+		border-bottom:1px solid #ccc;
+		padding-left: 20px;
+		font-weight: normal;
+		font-size: 2rem;
+		position: relative;
+	}
+	.complain,.average{
+		position: absolute;
+		top:0px;
+		left:350px;
+	}
+	.average{
+		left:600px;
+	}
+	.cjt_list{
+		margin-left: 10px;
+		margin-top:10px;
+	}
+	.cjt_list li{
+		line-height: 30px;
+		height: 30px;
+		border:1px solid #ccc;
+		margin-top: -1px;
+		padding-left: 20px;
+		position: relative;
+	}
+	.guid-start{
+		position:absolute;
+		right:30px;
+		top:10px;
+		cursor: pointer;
+	}
+	.sub_title{
+		height: 40px;
+		font-size: 2.4rem;
+		border-bottom: 1px solid #ccc;
+		font-weight: normal !important;
+		text-align: center;
+		line-height: 40px;
+		background: #339cd3;
+		color: #fff;
+	}
+	.jt_title{
+		height: 40px;
+		position: relative;
+		border-bottom: 1px solid #ccc;
+		background: #339cd3;
+		color: #fff;
+	}
+	.jt_st,.jt_sa,.jt_se{
+		position: absolute;
+		top:0px;
+		font-size: 2.4rem;
+		line-height: 40px;
+		left: 50px;
+	}
+	.jt_sa{
+
+		left: 350px;
+	}
+	.jt_se{
+
+		left: 550px;
+	}
+	.btn_wrap{
+		height: 40px;
+		position: relative;
+	}
+	.btnAdd{
+		position: absolute;
+		left:230px;
+		top: 450px;
+		padding-left: 80px;
+		/*background:#319CD0;*/
+		color: #fff;
+		height: 40px;
+		width: 200px;
+		line-height: 30px;
+		cursor: pointer;
+		border-radius: 3px;
+		margin-top: 20px;
+		line-height: 40px;
+		background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+		letter-spacing: 0.5em;
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	}
+	.cancelBtn,.subBtn{
+		position: absolute;
+		left:100px;
+		top:0px;
+		padding: 0 10px;
+		background:#319CD0;
+		color: #fff;
+		height: 30px;
+		line-height: 30px;
+		cursor: pointer;
+		border-radius: 3px;
+	}
+	.cancelBtn{
+		left: 320px;
+	}
+	#wrapper {
+		position: absolute;
+		top: 40px;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: auto;
+	}
+	#scroller {
+		position: absolute;
+		top: 4px;
+		z-index: 1;
+		width: 100%;
+	}
+	.batchDetail{
+		width: 100%;
+		height: 130px;
+		border-bottom: 1px solid black;
+	}
+	.batchDetail span{
+		font-weight: bold;
+		float: left;
+		width: 150px;
+		height: 50px;
+		margin-left: 100px;
+		margin-top: 5px;
+		line-height: 30px;
+		text-indent: 0.5em;
+	}
+	.trainDateInputStart {
+		border: 1px solid #29A7E1;
+		height: 30px;
+		line-height: 30px;
+		text-indent: 0.5em;
+		border-radius: 5px;
+		-webkit-box-sizing: border-box;
+		color: #329DD1;
+		background:transparent;
+		width: 150px;
+		position: absolute;
+		left: 430px;
+		top: 65px;
+	}
+	.trainDateInputEnd {
+		border: 1px solid #29A7E1;
+		height: 30px;
+		line-height: 30px;
+		text-indent: 0.5em;
+		border-radius: 5px;
+		-webkit-box-sizing: border-box;
+		color: #329DD1;
+		background:transparent;
+		width: 150px;
+		position: absolute;
+		left: 780px;
+		top: 65px;
+	}
+	.batchDetail input{
+		width: 100px;
+		height: 30px;
+		margin-left: 10px;
+		color: #329DD1;
+		line-height: 30px;
+		box-shadow: none !important;
+		border: 1px solid #29A7E1;
+		border-radius: 5px;
+		background: transparent;
+	}
+	.batchTeacher{
+		position: absolute;
+		top: 110px;
+		left: 100px;
+	}
+	.batchGroups{
+		width: 100%;
+		height: 50px;
+	}
+	.batchGroups span{
+		font-weight: bold;
+		float: left;
+		width: 150px;
+		height: 50px;
+		margin-left: 100px;
+		margin-top: 5px;
+	}
+	.batchGroups input{
+		width: 100px;
+		height: 30px;
+		margin-left: 10px;
+		color: #329DD1;
+		line-height: 30px;
+		box-shadow: none !important;
+		border: 1px solid #29A7E1;
+		border-radius: 5px;
+		background: transparent;
+	}
+	.Groups{
+		position: absolute;
+		top: 240px;
+		left: 100px;
+	}
+	.Groups ul{
+		margin-top: 20px;
+	}
+	.addBatch{
+		position: absolute;
+		top: 550px;
+		left: 380px;
+		padding-left: 80px;
+		/*background:#319CD0;*/
+		color: #fff;
+		height: 40px;
+		width: 170px;
+		line-height: 30px;
+		cursor: pointer;
+		border-radius: 3px;
+		line-height: 40px;
+		background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+		letter-spacing: 0.5em;
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	}
+	.place{
+		width: 100px;
+		height: 100%;
+		line-height: 70px;
+		text-align: center;
+		cursor: pointer;
+		font-weight: bold;
+		float: left;
+		margin-left: 200px;
+	}
+	.roleGrolItem{
+		border-top: 1px solid #ECB034;
+		color: #fff !important;
+		background: -webkit-linear-gradient(left, #E99417 20%, #B54E09 100%);
+		margin: 8px 0;
+		width: 180px;
+		height: 39px;
+		line-height: 39px;
+		color: #fff;
+		border-right: 1px solid #fff;
+		text-align: center;
+		cursor: pointer;
+		font-weight: bold;
+		float: left;
+	}
+	.choosePlaceLi{
+		float: left;
+		background: #76a9e1 ;
+		margin: 8px 0;
+		width: 180px;
+		height: 39px;
+		line-height: 39px;
+		color: #fff;
+		border-right: 1px solid #fff;
+		text-align: center;
+		cursor: pointer;
+		font-weight: bold;
+	}
+	.choosePlace li:first-child{
+		border-top-left-radius: 7px;
+		border-bottom-left-radius: 7px;
+
+	}
+	.choosePlace li:last-child {
+		border-top-right-radius: 7px;
+		border-bottom-right-radius: 7px;
+
+	}
+	.startLession{
+		position: absolute;
+		top: 550px;
+		left: 380px;
+		padding-left: 80px;
+		/*background:#319CD0;*/
+		color: #fff;
+		height: 40px;
+		width: 170px;
+		line-height: 30px;
+		cursor: pointer;
+		border-radius: 3px;
+		line-height: 40px;
+		background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+		letter-spacing: 0.5em;
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	}
+	.completeGroup{
+		position: absolute;
+		top: 580px;
+		left: 380px;
+		padding-left: 80px;
+		/*background:#319CD0;*/
+		color: #fff;
+		height: 40px;
+		width: 170px;
+		line-height: 30px;
+		cursor: pointer;
+		border-radius: 3px;
+		line-height: 40px;
+		background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+		letter-spacing: 0.5em;
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	}
+	.addBatchList{
+		position: absolute;
+		top: 350px;
+		left: 380px;
+		padding-left: 80px;
+		/*background:#319CD0;*/
+		color: #fff;
+		height: 40px;
+		width: 170px;
+		line-height: 30px;
+		cursor: pointer;
+		border-radius: 3px;
+		line-height: 40px;
+		background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+		letter-spacing: 0.5em;
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	}
+	.editGroup{
+		position: absolute;
+		top: -10px;
+		left: 140px;
+		padding-left: 80px;
+		/*background:#319CD0;*/
+		color: #fff;
+		height: 40px;
+		width: 170px;
+		line-height: 30px;
+		cursor: pointer;
+		border-radius: 3px;
+		line-height: 40px;
+		background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+		letter-spacing: 0.5em;
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	}
+	/*增加分组*/.
+	.addGroup{
+		position: absolute;
+		top: 100px;
+		left: 100px;
+	}
+	.searchStudent{
+		position: absolute;
+		top: 195px;
+		left: 760px;
+	}
+	.searchTeach{
+		position: absolute;
+
+		/*left: 60px;*/
+	}
+	.trainNameList{
+		position: absolute;
+		border: 1px solid #25aae2;
+		background: #fff;
+		z-index: 9;
+		border-radius: 5px;
+		padding: 2px 8px;
+		box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+		top: 195px;
+		left: 400px;
+		-webdit-box-sizing: border-box;
+		box-sizing: border-box;
+		display: none;
+	}
+	.trainNameList li {
+		line-height: 3rem;
+		height: 3rem;
+		margin-right: 10px;
+	}
+	.trainNameList li.selected:after {
+		content:"√";
+		float: right;
+		margin-left: 10px;
+	}
+	.teachNameList{
+		position: absolute;
+		border: 1px solid #25aae2;
+		background: #fff;
+		z-index: 9;
+		border-radius: 5px;
+		padding: 2px 8px;
+		box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+		top: 30px;
+		left: 60px;
+		-webdit-box-sizing: border-box;
+		box-sizing: border-box;
+		display: none;
+	}
+	.teachNameList li {
+		line-height: 3rem;
+		height: 3rem;
+		margin-right: 10px;
+	}
+	.teachNameList li.selected:after {
+		content:"√";
+		float: right;
+		margin-left: 10px;
+	}
+
+	.remark{
+		top: 30%;
+		height: 120px;
+		position: fixed;
+		z-index: 99999999;
+		background: #797a79;
+		left: 50%;
+		margin-left: -100px;
+		width: 250px;
+		border-radius: 7px;
+		display: none;
+		padding: 10px;
+		cursor: pointer;
+	}
+	.remark div{
+		/*background:#319CD0;*/
+		float: left;
+		margin-left: 50px;
+		margin-top: 10px;
+		color: #fff;
+		height: 30px;
+		width: 50px;
+		cursor: pointer;
+		line-height: 30px;
+		padding-left: 10px;
+		cursor: pointer;
+		background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+		letter-spacing: 0.5px;
+		border-radius: 2px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	}
+	.secondValue{
+		/*background:#319CD0;*/
+		color: black;
+		width: 30px;
+		height: 20px;
+
+	}
+	.remark span{
+		display: block;
+		padding: 5px 0;
+	}
+
+	.remarkGroup{
+		top: 30%;
+		height: 120px;
+		position: fixed;
+		z-index: 99999999;
+		background: #797a79;
+		left: 50%;
+		margin-left: -100px;
+		width: 250px;
+		border-radius: 7px;
+		display: none;
+		padding: 10px;
+		cursor: pointer;
+	}
+	.remarkGroup div{
+		/*background:#319CD0;*/
+		float: left;
+		margin-left: 50px;
+		margin-top: 10px;
+		color: #fff;
+		height: 30px;
+		width: 50px;
+		cursor: pointer;
+		line-height: 30px;
+		padding-left: 10px;
+		cursor: pointer;
+		background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+		letter-spacing: 0.5px;
+		border-radius: 2px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	}
+	.remarkGroup span{
+		display: block;
+		padding: 5px 0;
+	}
+	.secondName{
+		/*background:#319CD0;*/
+		color: black;
+		width: 30px;
+		height: 20px;
+
+	}
+	.Teacher{
+		float: left;
+		position: absolute;
+		left: 80px;
+		margin-top: 10px;
+		/*top:-40px;*/
+	}
+	.teachName{
+		float: left;
+		/*width: 80px;*/
+	}
+	
+</style>
+
+<script type="text/x-underscore-template">//put your template here</script>
+<header class="top-title c1 fs24">
+	<h1 class="title textC">
+	</h1>
+	<div class="time leftTop">
+		<img src="../base/img/back.ing" alt="">
+	</div>
+</header>
+<!-- header -->
+<div id="content"></div>
+<!-- footer -->
+<!-- 遮罩层 -->
+<div class="masker"></div>
+<footer class = 'footer-menu'></footer>
+<!--备注-->
+<div class="remark">
+	<span class="firstGroup">原组号:</span>
+	<span class="secondGroup" style="float: left">新组号:</span>
+	<input type="text" style="color: #0082c4;height: 30px;width: 100px;margin-left: 10px" class="secondValue">
+	<div class="addRemark">确定</div>
+	<div class="cancelRemark">取消</div>
+</div>
+<div class="remarkGroup">
+	<span class="firstGroup">原组名:</span>
+	<span class="secondGroup" style="float: left">新组名:</span>
+	<input type="text" style="color: #0082c4;height: 30px;width: 100px;margin-left: 10px" class="secondName">
+	<div class="editRemark">确定</div>
+	<div class="cancelRemarkSed">取消</div>
+</div>
+<!--备注-->

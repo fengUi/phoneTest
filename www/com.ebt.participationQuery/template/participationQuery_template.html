@@ -1,0 +1,58 @@
+<script type = 'text/x-underscore-template' id = 'participationQuery_template'>
+	<%var name = result.datas[0].results[0].studentName%>
+	<label class="searchLabel fs20"><div class = 'c0 textE search_name'><%=name%><%= lang.participationQueryPosition%></div></label>
+		<div class="dialogdel"><%= lang.cancel%></div>
+			<div id = 'wrapper' class = 'swiper-container'>
+				<div class="searchbody fw swiper-wrapper">
+				    <%_.each(result.datas,function(item,index){%>
+					<%_.each(item.results,function(results_item,results_index){%>
+					<ul class="queryList c0" data-value="results_index">
+							<li class = 'syc c1'>
+								<span class = 'courseName fs16'><%= results_item.year%><%= results_item.courseYearperiod%><%= results_item.courseName%></span>
+								<img src="../base/img/forward.ing" alt="" width="15px">
+							</li>
+							<ul class="listItemSide">
+							<li class = 'listItem'>
+								<div class="flex fwn flexBorder" style="width: 520px;">
+									<div>
+										<span><%= results_item.lessonName%></span>
+									</div>
+									<div>
+										<span><%= results_item.actype%></span>
+									</div>
+									<div>
+										<!--判断是否通过0为未通过，1为通过，-1为不显示-->
+										<% var pass=""%>
+										<%if(results_item.passed==false){
+										pass="不合格"
+										}
+										else{
+										pass="合格"
+										}%>
+										<span><%=pass%></span>
+									</div>
+
+									<div>
+										<% var startTime = results_item.startTime.substring(0,10);%>
+										<%= startTime%>
+									</div>
+									<div>
+										<%= results_item.position%>
+									</div>
+									<div>
+										<span><%=  results_item.station%></span>
+									</div>
+								</div>
+							</li>
+							</ul>
+					</ul>
+					<%})%>
+					<%})%>
+
+				</div>
+				<div class = 'outerPagi'>
+						<div class="pagination"></div>
+				</div>		
+			</div>
+		<div class = 'showCourse'></div>
+</script>

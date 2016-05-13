@@ -1,0 +1,214 @@
+<style type="text/css" media="all">
+/*put your style here*/
+	h1{
+		font-weight: normal;
+	}
+	.time{
+		margin-left: 62px !important;
+	}
+	 .content{
+        background: #fff;
+    } 
+	
+	.iconCircle{
+		background-image: url(../base/img/time_base.ing);
+		background-repeat: no-repeat;
+		/*position: absolute;*/
+		/*left: 48px;*/
+		/*width: 84px;*/
+		/*height: 92px;*/
+		color: #fff;
+		border-radius: 50px;
+		margin: -13px 0 0 -20px;
+		line-height: 85px;
+		text-align: center;
+		top:14px;
+	}
+	.course{
+		/* 	position:absolute;
+        top:0; */
+		padding: 0 20px 0 172px;
+		margin: 0 auto;
+		height:auto;
+		overflow: hidden;
+		position: relative;
+	}
+	.refresher{
+		height:auto;
+		float:left;
+		width:100%;
+	}
+	.course_item{
+		background: #FFFFFF;
+		width: 46%;
+		height: 304px;
+		float: left;
+		margin: 1px 1.5% 25px 1.5%;
+		-webkit-box-sizing: border-box;
+		position: relative;
+		border-radius: 10px;
+		-webkit-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.2);
+		-moz-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.2);
+		box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.2);
+		border-top: 2px solid rgba(0,0,0,0.2);
+		border-left: 2px solid rgba(0,0,0,0.2);
+	}
+
+	header>img{
+		position:absolute;
+		top: 0px;
+		left: 0px;
+		padding: 18px 24px;
+	}
+	
+	#wrapper {
+		position: absolute;
+		top: 15px;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: auto;
+	}
+	#scroller{
+		position: absolute;
+		top: 10px;
+		z-index: 1;
+		width: 100%;
+		/*height:1000px;*/
+	}
+	.link{
+		width:100%;
+		height:33%;
+		margin-top:10px;
+	}
+	#role_wrap{
+		position: absolute;
+		width: 100%;
+		background: #fff;
+		height: 100%;
+	}
+	#role_wrap h3{
+		text-align: center;
+		font-size: 24px;
+		font-weight: normal;
+		padding: 10px 0;
+	}
+    .role_choose{
+    	position: absolute;
+    	width: 100%;
+    	display: block;
+    	border-top: 1px solid #ccc;
+    }
+	.role_list{
+		display: block;
+	    height: 55px;
+	    width: 84.6%;
+	    float: left;
+	    border-right: 1px solid #ccc;
+	}
+	.role_list li,.stu_name{
+		float: left;
+	}
+	.role_list li{
+		background: #76a9e1 ;
+	    margin: 8px 0;
+	    width: 141px;
+	    height: 39px;
+	    line-height: 39px;
+	    color: #fff;
+	    border-right: 1px solid #fff;
+	    text-align: center;
+	    cursor: pointer;
+	    font-weight: bold;   
+	}
+	.role_list li:first-child{
+		border-top-left-radius: 7px;
+		border-bottom-left-radius: 7px;
+		border-left: 1px #76a9e1 solid;
+	}
+	.role_list li:last-child{
+		border-top-right-radius: 7px;
+		border-bottom-right-radius: 7px;
+		border-left: 1px #76a9e1 solid;
+	}
+	.stu_name{
+		width: 15%;
+		text-align: center;
+		border-right: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+	}
+	.role_item{
+		height: 55px;
+		line-height: 55px;
+		float: left;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+	}
+	#roleGros{
+		height: 55px;
+		padding-left: 50px;
+	}
+	.trainingPlaceBtn{
+		margin-top: -45px;
+		font-weight: 700;
+		font-size: 20px;
+		
+	}
+
+	.roleActive{
+		background: url(../base/realImg/btn_01.png) repeat-x center center !important;
+		height: 39px !important;
+		color: #000 !important;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	.trainingPlaceCourseThree img{
+		width: 640px;
+		height: 57px;
+		
+	}
+	.trainingPlaceCourseThree{
+	    position: fixed;
+	    bottom: 0;
+	    text-align: center;
+	    padding: 10px 0 40px 0;
+	    width: 100%;
+	    background: #fff;
+	    z-index: 99999;
+	}
+	.trainingPlaceCourseThree span{
+		cursor: pointer;
+		padding: 0 130px;
+	}
+	.roleGroupCont{
+		position: absolute;
+		left: 20%;
+		margin-left: -80px;
+		width: 960px;
+	}
+ 
+</style>
+
+<script type="text/x-underscore-template">
+//put your template here
+</script>
+
+<header class="top-title c1 fs24">
+	<img src = '../base/img/back.ing'>
+	<div class="time leftTop fs20" id = "showTime"></div>
+	<h1 class="title textC">2014上半年</h1>
+</header>
+
+<div class="content">
+	<div id="wrapper">
+		<div id="scroller">
+			<div class="roleGroupCont"></div>
+		</div>
+    </div>
+</div>
+<div class="trainingPlaceCourseThree textC">
+     <div><img src="../base/realImg/Gbtn.png"</div>
+     <div class="trainingPlaceBtn"><span class="next" >下一步</span></div>
+   </div>	   
+</div>

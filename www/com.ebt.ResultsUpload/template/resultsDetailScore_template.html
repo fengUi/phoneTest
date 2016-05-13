@@ -1,0 +1,89 @@
+<script id="resultsDetailScore_template" type="text/x-underscore-template">
+<header class="top-title c1 fs24">
+	<h1 class="title textC">
+	    <%=itemData.courseYear%><%=itemData.courseYearperiod%><%=itemData.courseName%>(<%=itemData.traimName%>)
+	    <span class="stuname">学员：<%=stuDate.studentName%>(<%=stuDate.skillName%>)</span>
+
+	</h1>
+	<div class="time leftTop">
+		<img src="../base/img/back.ing" alt=""></div>
+		
+			
+	</div>
+</header>
+<div class="content">
+  <aside class="sub_aside">
+    <h3 class="sub_title">科目列表</h3>
+	<ul class="sub_list">
+	   <%
+	      _.each(stuDate.subjects,function(subjectItem,index){%>
+			 <li class=<%=(index==0)?"sub_active":""%>><span><%=subjectItem.seq%></span><%=subjectItem.subjectName%></li>
+	 <%})%>
+		 
+	</ul>
+</aside>
+ <div class="jtas_wrap"> 
+       <div class="jt_title">
+          <span class="jt_st">成绩列表</span>
+          <span class="jt_sa">成绩评定</span>
+       </div>
+       <div id="wrapper">
+          <div id="scroller">
+	   <%
+	      _.each(stuDate.subjects,function(subjectItem,index){%>
+			   <div class="jtas_item" style=<%=(index>0)?"display:none":""%>>
+	            <%_.each(subjectItem.jtas,function(jtasItem,index){%>
+				   	 <div class="jtas_list">
+						<h3><%=jtasItem.jtaName%>
+						 
+						<%
+						      var arr=jtasItem.cJtas;
+						      var len=0;
+						      var sum=0;
+						      var average;
+						      for(var i=0;i<arr.length;i++){
+						      	 if(arr[i].score){
+						         	sum+=parseFloat(arr[i].score.score);
+						         	len++;
+						        }
+						      }
+						      if(len==0){
+							      	average="";
+							      }else{
+							      	 average=(sum/len).toFixed(1);
+							    }
+						   %>
+						<span class="average">
+                              <%=average%>
+						</span>
+						</h3>
+
+						 <ul class="cjt_list">
+							<%_.each(jtasItem.cJtas,function(cjtasItem,c_index){%>
+								
+									<li class="active">
+										 <%=cjtasItem.cJtaName%>
+										 <span class="c_score">
+										    <%
+										        var scroe="";
+										        if(cjtasItem.score){
+                                                   scroe=cjtasItem.score.score;
+										        }
+										    %>
+										    <%=scroe%>
+										 </span>
+										 
+									 </li>
+								  
+							 <%})%>
+						  </ul>
+					  </div>
+			  <%})%>
+
+	          </div>
+		<%})%>
+	      </div>
+	    </div>
+</div>	
+
+</script>

@@ -1,0 +1,77 @@
+<script id = 'completeCourse_template' type = 'text/x-underscore-template'>
+<%
+	if(typeof result !== "undefined" && result !== null && result !== "" && result.length !== 0) {
+%>    
+
+     <%_.each(result.datas,function(monthItem,index){%>
+     	    <div class="course">
+     	       <div class = 'iconCircle c1 fs26'>
+		     	           <%=monthItem.month%>月
+		        </div>
+		        <ul class ="refresher">
+           <%_.each(monthItem.results,function(courseitem,index){%>
+		     	 <li class="course_item" >
+		     	     <div class="link fs24 c2">  
+			     	      <div class="c_year p textC">
+			     	         <%=monthItem.year%><%=courseitem.courseYearperiod%>
+			     	      </div>
+			     	      <div class="c_name" data-value=<%=courseitem.resultId%>>
+			     	         <%=courseitem.courseName%>
+			     	      </div>
+			     	      <div class="bg">
+				     	      <div class="c_time">
+				     	          <%
+				     	             var st=courseitem.startTime;
+				     	             var stArr=st.split(" ");
+				     	             var stime=stArr[0].split("-");
+				     	             var year=stime[0];
+				     	             var month=stime[1];
+				     	             var day=stime[2];
+				     	             var sh=stArr[1].split(":")[0]+":00";
+				     	             var et=courseitem.endTime;
+				     	             var eh=parseInt(stArr[1].split(":")[0])+1+":00";
+				     	             var time=year+"年"+month+"月"+day+"日 "
+				     	             var s_etime=sh+"-"+eh;
+				     	          %>
+				     	          <%=time%>
+				     	         
+				     	        
+				     	      </div>
+				     	      <div class="s_etime">
+                                  <%=s_etime%>
+				     	      </div>
+				     	      <div class="c_stu">
+				     	        学员:<%=courseitem.studentName%>(<%=courseitem.position%>)
+				     	      </div>
+				     	      <div class="c_sta">
+				     	          <%=courseitem.station%> 
+				     	      </div>
+				     	      <div class="c_res">
+				     	      	  <span><%=courseitem.actype%></span>
+				     	          <span><%=courseitem.lessonName%></span>
+					              <% var pass=courseitem.passed;
+										if(pass=="0"){
+										   pass="未通过";
+										 }
+										if(pass=="1"){
+										 	pass="通过"
+										 }
+										if(pass=="-1"){
+										    pass="";
+										}
+									%>
+									<span class="pass_state"><%=pass%></span>
+							  </div>
+							  
+							</div>	
+					   </div>
+		     	 </li>
+
+		     <%})%>
+               </ul>
+           </div>
+     <%})%>
+	
+
+<%}%>
+</script>

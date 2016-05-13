@@ -1,0 +1,72 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.makeit.cn"
+        }
+    },
+    "dependent_plugins": {}
+}

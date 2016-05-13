@@ -1,0 +1,61 @@
+<script id = 'batchDetail_template' type = 'text/x-underscore-template'>
+	<%if(typeof obj !== "undefined" && obj !== null && obj !== "" && obj.length !== 0) {%>
+		<div class="batchDetail ">
+			<p class="batchTime fs22"><span>批次时间：</span><%=obj.startTime%>至<%=obj.endTime%></p>
+			<p class="batchSum fs22"><span>批次人数：</span><%=obj.sum%></p>
+                  <%if(obj.passed){%>
+                        <p class="pass fs18"><span>通过：</span><%=obj.passed%></p>
+                  <%}%>
+                  <%if(obj.unpassed){%>
+                        <p class="unpass fs18"><span>未通过：</span><%=obj.unpassed%></p>
+                  <%}%>
+			<div id="batchTable">
+			<table>
+				<tr >
+					<th>姓名</th>
+					<th>机型</th>
+					<%_.each(obj.trains,function(trains_item,index){%>
+                        <th><%=trains_item.trainName%></th>
+                   	<%})%>
+				</tr>
+				<%_.each(obj.students,function(students_item,index){%>
+                        <tr>
+                        	<td><%=students_item.studentName%></td>
+                        	<td><%=students_item.actype%></td>
+                              <%if(students_item.scores){%>
+                        	<%if(students_item.scores.length<obj.trains.length){	
+                        		for(var i=0;i<obj.trains.length;i++){%>
+                        			<%if(students_item.scores[i]!=undefined){%>
+                        				<td class="Detail" 
+                                                data-score="<%=students_item.scores[i].score%>" 
+                                                data-stuId="<%=students_item.studentId%>"
+                                                data-resultId="<%=students_item.scores[i].resultId%>"><%=students_item.scores[i].score%></td>
+                        			<%}else{%>
+                        				<td></td>
+                        			<%}%>	
+                        		<%}%>
+                        	<%}else{%>     
+                        		<%for(var i=0;i<students_item.scores.length;i++){%>
+                        			<td class="Detail" 
+                                                data-score="<%=students_item.scores[i].score%>" 
+                                                data-stuId="<%=students_item.studentId%>"
+                        				data-resultId="<%=students_item.scores[i].resultId%>">
+                        				<%=students_item.scores[i].score%>
+                        			</td>
+                        		<%}%>
+                        	<%}%>	
+                              <%}else{%>
+                                    <%for(var i=0;i<obj.trains.length;i++){%>
+                                          <td data-stuId="<%=students_item.studentId%>">
+                                                
+                                          </td>
+                                    <%}%>
+                              <%}%> 
+                        </tr>
+                <%})%>
+			</table>
+			</div>
+			
+		</div>
+	<%}%>
+</script>

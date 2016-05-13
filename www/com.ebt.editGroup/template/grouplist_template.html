@@ -1,0 +1,205 @@
+<script id="grouplist_template" type="text/x-underscore-template">
+    <%
+    function formate(date) {
+        try {
+            var newtime;
+            newtime = date.replace(/-/g, "/");
+            forDate = new Date(newtime);
+            return forDate;
+        }catch (e){
+            return false;
+        }
+    }
+    var temp,action;
+    temp = location.hash.split("&")[1];
+    action = !!temp ? temp.split("=")[1] : "begin";
+    %>
+    <%
+        if(action=="group"){
+    var result = Piece.Session.loadObject("batchs");
+    var currentName = Piece.Session.loadObject("currentName");
+    console.log(obj)
+    %>
+    <div class="batchDetail">
+    <span class="batchCount">批次<input type="text" class="batchName" value="<%=obj.batchName%>"></span>
+    <span class="batchStart" style="width: 250px;">开始时间
+        <div class="trainDateInputStart"><%=formate(obj.startTime).formatDate("yyyy-MM-dd")%></div>
+    </span>
+    <span class="batchEnd" style="width: 250px;">结束时间
+        <div class="trainDateInputEnd"><%=formate(obj.endTime).formatDate("yyyy-MM-dd")%></div>
+    <span class="batchTeacher" style="margin-left: 0px;width: 500px;" >教员
+        <span style="position: absolute;left: -100px;top:37px;">已选教员：</span>
+        <div class="Teacher"><%if(obj.instructors){%><%_.each(obj.instructors,function(item,index){%><div class='teachName'><%=item.instructorName%><img data-Id=<%=item.instructorId%> class="delTeacher" src='../base/img/u3341.png'></div><%})%><%}%></div>
+        <div class="TeacherId" style="display: none"><%if(obj.instructors){%><%_.each(obj.instructors,function(item,index){%><%=item.instructorId%>,<%})%><%}%></div>
+        <!--<input class="GroupsTeachValue" type="text" style="width: 400px;">-->
+        <input class="GroupsTeachValue" type="text" style="width: 400px;" >
+        <div class="teachNameList">
+            <ul></ul>
+        </div>
+        <img class="searchTeach" src="../base/img/u3443.png" data-value="Teach">
+    </span>
+
+    </div>
+<div class="batchGroups">
+    <span class="GroupsCount">分组<input class="GroupsCountValue" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></span>
+    <span class="GroupsStudent" style="width: 500px;">
+        组员
+        <input class="GroupsStudentValue" type="text" style="width: 350px;">
+        <div class="trainNameList">
+            <ul></ul>
+        </div>
+        <img class="searchStudent" src="../base/img/u3443.png" data-value="student">
+    </span>
+    <img class="addGroup" src="../base/img/u3447.png">
+</div>
+    <div class="Groups">
+        <h3>分组列表</h3>
+        <ul class="group_list" >
+            <%_.each(obj.groups,function(groups_item,groups_index){%>
+
+            <li data-value=<%=JSON.stringify(groups_item.students)%> data-groups=<%=groups_item.groupId%> class="chooseGroupLi">
+                <span class="group" data-value=<%=groups_item.groupName%> data-ID=<%=groups_item.groupId%>>分组<%=groups_item.groupName%>
+                    <%if(groups_item.status==0){%>
+                    <img class="outGroup" data-value="<%=groups_item.groupId%>" src="../base/img/u3341.png">
+                    <img class="changeGroup" data-value=<%=groups_item.groupId%> data-group=<%=groups_item.groupId%> data-groupName=<%=groups_item.groupName%> src="../base/img/u3349.png">
+                    <%}%>
+                </span>
+                <%_.each(groups_item.students,function(students_item,students_index){%>
+                <%if(students_index==5||students_index==10||students_index==15||students_index==20){%>
+                    <br>
+                    <span class="studentsItem" data-value=<%=students_item.studentName%> style="margin-left:100px"><%=students_item.studentName%>
+                        <%if(groups_item.status==0){%>
+                        <img class="outStudent" data-value=<%=students_item.gId%> data-group=<%=groups_item.groupId%> src="../base/img/u3341.png">
+                        <img class="changeStudent" data-value=<%=students_item.gId%> data-group=<%=groups_item.groupId%> data-groupName=<%=groups_item.groupName%> src="../base/img/u3349.png">
+                        <%}%>
+                    </span>
+                <%}else{%>
+                <span class="studentsItem" data-value=<%=students_item.studentName%> style="margin-left:20px"><%=students_item.studentName%>
+                    <%if(groups_item.status==0){%>
+                    <img class="outStudent" data-value=<%=students_item.gId%> data-group=<%=groups_item.groupId%> src="../base/img/u3341.png">
+                    <img class="changeStudent" data-value=<%=students_item.gId%> data-group=<%=groups_item.groupId%> data-groupName=<%=groups_item.groupName%> src="../base/img/u3349.png">
+                    <%}%>
+                </span>
+                <%}%>
+                <%})%>
+            </li>
+            <%})%>
+        </ul>
+    </div>
+    <div class="completeGroup">完成分组</div>
+    <%
+        }else if(action=="start"){
+         var result = Piece.Session.loadObject("lessionData");
+    %>
+    <div class="batchDetail">
+        <div class="place">地点选择:</div>
+        <ul class="choosePlace">
+        <%_.each(result,function(result_item,result_index){%>
+            <%_.each(result_item.stationCodes,function(stationCodes_item,stationCodes_index){%>
+                <li style="float: left;margin-top:15px;" class="choosePlaceLi" data-value=<%=stationCodes_item.code%>><%=stationCodes_item.name%></li>
+            <%})%>
+        <%})%>
+        </ul>
+    </div>
+    <div class="Groups">
+        <h3>分组列表</h3><div class="editGroup">修改分组</div>
+        <ul class="sub_list" >
+            <%_.each(obj.groups,function(groups_item,groups_index){%>
+            <%if(groups_item.students.length>=10){%>
+            <li data-value=<%=JSON.stringify(groups_item.students)%> data-groups=<%=groups_item.groupId%> style="line-height: 40px;height: 90px;" class="chooseGroupLi">
+                <span>分组<%=groups_item.groupName%>(共<%if(groups_item.students){%><%=groups_item.students.length%><%}else{%>0<%}%>人)</span>
+                <%_.each(groups_item.students,function(students_item,students_index){%>
+                <%if(students_index==5||students_index==10||students_index==15||students_index==20){%>
+                    <br>
+                    <%if(students_item.finished==false){%>
+                        <span style="margin-left:130px"><%=students_item.studentName%></span>
+                    <%}else{%>
+                        <span style="margin-left:130px"><%=students_item.studentName%>(已打分)</span>
+                    <%}%>
+                <%}else{%>
+                    <%if(students_item.finished==false){%>
+                        <span><%=students_item.studentName%></span>
+                    <%}else{%>
+                        <span><%=students_item.studentName%>(已打分)</span>
+                    <%}%>
+                    <%}%>
+                <%})%>
+            </li>
+            <%}else{%>
+            <li data-value=<%=JSON.stringify(groups_item.students)%> data-groups=<%=groups_item.groupId%> class="chooseGroupLi chooseGroupLi<%=groups_item.groupId%>">
+                <span>分组<%=groups_item.groupName%>(共<%if(groups_item.students){%><%=groups_item.students.length%><%}else{%>0<%}%>人)</span>
+                <%_.each(groups_item.students,function(students_item,students_index){%>
+                    <%if(students_index==5||students_index==10||students_index==15||students_index==20){%>
+                         <br>
+                         <%if(students_item.finished==false){%>
+                            <span style="margin-left:130px"><%=students_item.studentName%></span>
+                         <%}else{%>
+                            <span style="margin-left:130px"><%=students_item.studentName%>(已打分)</span>
+                        <%}%>
+                    <%}else{%>
+                        <%if(students_item.finished==false){%>
+                            <span><%=students_item.studentName%></span>
+                         <%}else{%>
+                            <span><%=students_item.studentName%>(已打分)</span>
+                        <%}%>
+                    <%}%>
+
+                <%})%>
+            </li>
+            <%}%>
+            <%})%>
+        </ul>
+    </div>
+    <div class="startLession">开始课程</div>
+    <%
+        }else if(action=="begin"){
+    var currentName = Piece.Session.loadObject("currentName");
+    %>
+    <div class="batchDetail">
+        <span class="batchCount">批次<input class="batchName" type="text" value=""></span>
+    <span class="batchStart" style="width: 250px;">开始时间
+        <div class="trainDateInputStart"></div>
+    </span>
+    <span class="batchEnd" style="width: 250px;">结束时间
+        <div class="trainDateInputEnd"></div>
+    <span class="batchTeacher" style="margin-left: 0px;width: 500px;" >教员
+         <span style="position: absolute;left: -100px;top:37px;">已选教员：</span>
+        <div class="Teacher"></div>
+        <div class="TeacherId" style="display: none"></div>
+        <input class="GroupsTeachValue" type="text" style="width: 400px;">
+        <div class="teachNameList">
+            <ul></ul>
+        </div>
+        <img class="searchTeach" src="../base/img/u3443.png" data-value="Teach"></span>
+    </div>
+    <!--<div class="batchGroups">-->
+        <!--<span class="GroupsCount">分组<input class="GroupsCountValue" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></span>-->
+    <!--<span class="GroupsStudent" style="width: 500px;">-->
+        <!--组员-->
+        <!--<input class="GroupsStudentValue" type="text" style="width: 350px;">-->
+        <!--<div class="trainNameList">-->
+            <!--<ul></ul>-->
+        <!--</div>-->
+        <!--<img class="searchStudent" src="../base/img/u3443.png">-->
+    <!--</span>-->
+        <!--<img class="addGroup" src="../base/img/u3447.png">-->
+    <!--</div>-->
+    <!--<div class="Groups">-->
+        <!--<h3>分组列表</h3>-->
+        <!--<ul class="group_list" >-->
+            <!--<%_.each(obj.groups,function(groups_item,groups_index){%>-->
+            <!--<li data-value=<%=JSON.stringify(groups_item.students)%> data-groups=<%=groups_item.groupId%> class="chooseGroupLi">-->
+                <!--<span>分组<%=groups_item.groupName%><img class="outGroup" data-value="<%=groups_item.groupId%>" src="../base/img/u3341.png"></span>-->
+                <!--<%_.each(groups_item.students,function(students_item,students_index){%>-->
+                <!--<span><%=students_item.studentName%><img class="outStudent" data-value="<%=students_item.gId%>" src="../base/img/u3341.png"></span>-->
+                <!--<%})%>-->
+            <!--</li>-->
+            <!--<%})%>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <div class="addBatchList">增加批次</div>
+    <%
+        }
+    %>
+
+</script>

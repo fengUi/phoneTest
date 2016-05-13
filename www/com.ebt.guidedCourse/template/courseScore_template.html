@@ -1,0 +1,127 @@
+<script id="courseScore_template" type="text/x-underscore-template">
+<div class="content">
+<%
+      function request(paras) {
+      var url = location.href;
+      var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+
+      var returnValue;
+      for (i = 0; i < paraString.length; i++) {
+        var tempParas = paraString[i].split('=')[0];
+        var parasValue = paraString[i].split('=')[1];
+
+        if (tempParas === paras)
+          returnValue = parasValue;
+      }
+
+      if (typeof(returnValue) == "undefined") {
+        return "";
+      } else {
+        return returnValue;
+      }
+
+        }
+   %>
+  <aside class="sub_aside">
+  	<div class="actype fs22">机型：<%=obj.groups[0].actypes.actype%></div>
+	<ul class="sub_list">
+	   <%
+	      _.each(obj.groups[0].actypes.subjects,function(subjectItem,index){%>
+			 <li data-index="<%=index%>"  class=<%=(index==0)?"tActive":""%> ><%=subjectItem.subjectName%></li>
+	 <%})%>
+	</ul>
+</aside>
+ <div class="jtas_wrap"> 
+ <div id="wrapper">
+		<div id="scroller">
+	   <%_.each(obj.groups[0].actypes.subjects,function(subjectItem,subjectindex){%>
+			<div class="subjectIndex" style=<%=(subjectindex>0)?"display:none":""%>>
+				<%_.each(subjectItem.jtas,function(jtasItem,jtasIndex){%>
+				   	 <div class="jtas_list">
+						<h3 class="jtasTitle jtasTitle_<%=jtasItem.jtaId%>" data-id="<%=jtasItem.jtaId%>" data-subId="<%=subjectItem.subjectId%>"><%=jtasItem.jtaName%></h3>
+						 <ul class="cjt_list">
+						 	
+						 	
+						 		<%_.each(obj.groups[0].students,function(stuItem,index){%>
+						 			
+						 				<div class="jtas_score">
+						 				<div class="Jtastu_name" 
+											 data-jtaId="<%=jtasItem.jtaId%>"
+											 data-subjectId="<%=subjectItem.subjectId%>"  
+											 data-stuId=<%=stuItem.studentId%>>
+										  	<div class="studentName"><%=stuItem.studentName%>(<%=stuItem.skillName%>)</div>
+								 			<div class="Jtascore">
+									 			<ul id="Jtascore_listLevel" class="Jtascore_list">
+										 			<%for(var i=0;i<5;i++){%>
+										 			<li data-gid="<%=stuItem.studentId%>" 
+											 			data-jtaId="<%=jtasItem.jtaId%>"
+											 			data-value="<%=i%>"
+											 			data-score="<%=i+1%>"
+											 			data-subjectId="<%=subjectItem.subjectId%>"
+											 			data-index=<%=index%>
+											 			class="Jtascore_listItem">
+											 			<%=i+1%>
+													</li>
+										 			<%}%>
+									 			</ul>
+							 				</div>
+										</div>
+										</div>	 
+						 			
+						 		<%})%>
+						 	
+						 	
+							<%_.each(jtasItem.cJtas,function(cjtasItem,c_index){%>
+									<li class="active active_<%=jtasItem.jtaId%>_<%=subjectItem.subjectId%>" 
+										data-id="<%=jtasItem.jtaId%>" 
+										data-subId="<%=subjectItem.subjectId%>" 
+										data-value="c_index" >
+                                         <div class="childLession"><%=cjtasItem.cJtaName%></div>
+										 <div class="Gimg"></div>
+										 <div class="scorearea">
+											 <div class="score_wrap">
+												 <div class="score_item">
+													 <%_.each(obj.groups[0].students,function(stuItem,index){
+                                                   
+                                                      
+                         if(cjtasItem.skills.indexOf(parseInt(stuItem.skill))!=-1){%>
+                             <div class="stu_name" data-cjtaId="<%=cjtasItem.cjtaId%>"
+											 data-jtaId="<%=jtasItem.jtaId%>"
+											
+											 data-subjectId="<%=subjectItem.subjectId%>"  data-stuId=<%=stuItem.studentId%>>
+								 <div class="studentName"><%=stuItem.studentName%>(<%=stuItem.skillName%>)</div>
+								 <div class="score">
+									 <ul id="score_listLevel" class="score_list">
+										 <%
+										 _.each(cjtasItem.scores,function(scoresItem,scoresIndex){
+										 %>
+										 	<li data-score=<%=JSON.stringify(scoresItem)%> data-gid="<%=stuItem.studentId%>" data-cjtaId="<%=cjtasItem.cjtaId%>"
+											 data-jtaId="<%=jtasItem.jtaId%>"
+											 data-value="<%=scoresIndex%>"
+											 data-subjectId="<%=subjectItem.subjectId%>"
+											
+											 class="score_listItem"><%=scoresItem.score%>
+											</li>
+										 <%})%>
+									 </ul>
+							 	</div>
+						 </div>
+                         <%}})%>
+												 </div>
+											 </div>
+										 </div>
+									 </li>
+
+							 <%})%>
+						  </ul>
+					  </div>
+			  <%})%>
+			</div>
+		<%})%>
+	      </div>
+	</div>
+</div>
+
+</div>
+
+</script>

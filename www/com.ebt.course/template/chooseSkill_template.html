@@ -1,0 +1,69 @@
+<script id="chooseSkill_template" type="text/x-underscore-template">
+    <%
+      function request(paras) {
+      var url = location.href;
+      var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+
+      var returnValue;
+      for (i = 0; i < paraString.length; i++) {
+        var tempParas = paraString[i].split('=')[0];
+        var parasValue = paraString[i].split('=')[1];
+
+        if (tempParas === paras)
+          returnValue = parasValue;
+      }
+
+      if (typeof(returnValue) == "undefined") {
+        return "";
+      } else {
+        return returnValue;
+      }
+
+        }
+   %>
+    <div id ="role_wrap">
+        <h3 class="role_title">组员角色分配</h3>
+        <div class="role_choose">
+            <div id="wrapper">
+            <div id="scroller">
+            <%console.log(request("groupIndex"))%>
+            <%_.each(chooseinfo.groups,function(group,group_index){%>
+            <%if(group.groupIndex==request("groupIndex")){%>
+              <%_.each(group.students,function(student,student_index){%>
+                <div class="role_item">
+                <div class="stu_name" data-value="result_item.code" >
+                    <%=student.studentName%>
+                </div>
+                <%if(student.finished==false){%>
+                <div  class="role_list" >
+                    <ul class="chooseSkill">
+                        <%
+                       
+                        _.each(skills,function(skill,skill_index){
+                        %>
+                        <li class="chooseSkillLi" 
+                        data-id=<%=student.gId%> 
+                        data-stuname=<%=student.studentName%>
+                        data-stuId=<%=student.studentId%>  
+                        data-value="<%=skill.code%>" 
+                        data-name="<%=skill.name%>"><%=skill.name%></li>
+                        <%})%>
+                    </ul>
+                </div>
+                <%}else{%>
+                <div  class="role_list">
+                     <span>该学员已完成课程打分</span>
+                   
+                </div>
+                <%}%>
+                </div>
+              <%})%>
+            <%}%> 
+            <%})%>
+            </div>
+            </div>
+        </div>
+        <div class="tip"></div>
+        <div class="startLession">下一步</div>
+    </div>
+</script>

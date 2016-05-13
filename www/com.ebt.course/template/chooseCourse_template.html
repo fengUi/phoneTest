@@ -1,0 +1,27 @@
+<script id="chooseCourse_template" type="text/x-underscore-template">
+
+
+<header class="top-title c1">
+  <div class="time leftTop">
+     <img src="../base/img/back.ing" alt="">
+  </div>
+
+  <h1 class="title textC fs24">
+  
+  </h1>
+</header>
+
+<div class="groups">
+<% _.each(result.times,function(timesItem,index){%>
+			<div class="time_item" >
+			    <%=timesItem%>
+
+			</div>
+			<%})%>
+</div>
+
+
+
+	
+
+</script>

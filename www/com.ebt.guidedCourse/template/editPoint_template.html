@@ -1,0 +1,81 @@
+<script id="editPoint_template" type="text/x-underscore-template">
+<div class="content">
+<div class="editList">
+	<ul id="skilledLevel">
+		<li class="active skilledLevelItem"><span class="spanOne"></span>张三</li>
+		<li class="skilledLevelItem"><span class="spanTwo"></span>李威</li>
+		<li class="skilledLevelItem"><span class="spanOne"></span>王明</li>
+		<li class="skilledLevelItem"><span class="spanOne"></span>陈普</li>
+	</ul>
+</div>
+
+<div class="editNav">
+     	<div class="editNavLt">科目列表</div>
+     	<div class="editNavMd1">成绩列表</div>
+     	<div class="editNavMd2"></div>
+     	<div class="editNavRt">成绩评定</div>
+</div>
+  <aside class="sub_aside">
+	<ul class="sub_list">
+	   <%
+	      _.each(result.subjects,function(subjectItem,index){%>
+			 <li class="sub_click"><%=subjectItem.subjectName%></li>
+	 <%})%>
+		 
+	</ul>
+</aside>
+
+ <div class="jtas_wrap">
+ <div id="wrapper"> 
+    <div id="scroller">
+	 <div class="jtas_nav">
+		<span class="jtas_nav_txt1">机组协同</span>
+		<span class="jtas_nav_txt2">
+			<span class="jtas_icon1"></span>
+			<span class="jtas_icon2"></span>
+		</span>
+		<span>4</span>
+     </div>
+     <div class="jtas_md">
+		<ul>
+			<li>
+			  <span class="jtas_icon3"></span>
+			  <span class="jtas_txt">确认飞行任务</span>
+			  <span class="">4</span>
+			  <span class=""></span>
+			</li>
+		</ul>
+     </div>
+    <div class="jtas_nav">
+		<span class="jtas_nav_txt1">起飞前准备</span>
+		<span class="jtas_nav_txt2">
+			<span class="jtas_icon1"></span>
+			<span class="jtas_icon2"></span>
+		</span>
+		<span>4</span>
+     </div>
+     <div class="jtas_btm">
+          <div class="jtas_btm">
+             <span>存在问题</span>
+          </div>
+          <div class="jtas_btm">
+             <span>其它说明：</span>
+             <span>注意衣着</span>
+             <span class="jtas_allspan">
+	             <span class="jtas_btm5_icon1"></span>
+	             <span class="jtas_btm5_icon2"></span>
+	             <span class="jtas_btm5_span4">添加其它说明</span>
+	         </span>
+          </div>
+            <div class="jtas_btm5">
+             <span>改进措施：</span>
+             <span class="jtas_btm5_span5"><textarea name="" id=""></textarea></span>
+          </div>
+     </div>
+     </div>
+  </div>	   
+</div>	
+
+</script>
+
+

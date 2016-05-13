@@ -1,0 +1,295 @@
+<script id ='resultPage_template' type = 'text/x-underscore-template'>
+<p class="c0  item_title"><%=lang.gradeList%></p>
+<div class="scorelist">
+<div class="sub_top textC">
+	<div class="score_type c1 flex">
+		<div class="width40"></div>
+		<div class="width40 flex">
+		     <%if(lessonNo==1){%>
+		     <div><%=lang.estimateScore%></div>
+	       	<%}%>
+			<div><%=lang.gradeResult%></div>
+			<%if(lessonNo==1||lessonNo==2){%>
+			<div><%=lang.repeatTimes%></div>
+			<%}%>
+		</div>
+		<div class="width20"></div>
+	</div>
+</div>
+<% 
+if(typeof seqs !== "undefined" && seqs !== null && seqs !== "" && seqs.length !== 0) {
+%>
+<div class="sub_list">
+<%
+// 大类
+_.each(seqs,function(seqs_item,index){
+// 检查要素
+_.each(seqs_item.subjects,function(item,index){
+%>
+<div class="sub_item " data-subjectId='<%=item.subjectId%>' data-checked='<%=item.checked%>'>
+	<div class="sub_item_title flex">
+	   <div class="width40 subjectName"><%=item.subjectName%></div>
+	  <div class="width40 flex textC">
+	   <%if(lessonNo==1){%>
+	    <p class="estAver"></p>
+	   <%}%>
+	    <p class="scoreAver"></p>
+	    <%if(lessonNo==1||lessonNo==2){%>
+	    <div class="repeatAver">
+           <div class="sub_item_detail repeatItem editrepeat c2">
+				<span class="score_pre">&lt;</span>
+				<span class="score repeat" data-value='<%=item.repeat%>'><span><%=item.repeat%></span></span>
+				<span class="score_next">&gt;</span>
+		   </div>
+		   <div class="score repeat showrepeat" data-value='<%=item.repeat%>'> <span><%=item.repeat%> </span></div>
+	    </div>
+	     <%}%>
+	  </div>
+	  <div class="width20 textC sub_title_pic">
+	   <img src="../base/img/showScore.ing" alt="" width="25px" class="showCore">
+	   <img src="../base/img/edit.ing" alt="" width="25px" class="editCore">
+	   <img src="../base/img/toggleDown.ing" width="25px" alt="" class="toggleDown">
+	   <img src="../base/img/toggleUp.ing"  width="25px" alt="" class="toggleUp">
+	  </div>
+
+	</div>
+	<div class="itemCantain">
+<%
+// 右边检查项
+_.each(item.ratms,function(ratm_item,index){
+	// 获取红色项分数值
+	// #fff100
+	var redscore="",yellowscore="";
+	_.each(ratm_item.scores,function(score_item,index){
+       if(score_item.color=="#f00"){
+            redscore=score_item.score;
+       }
+       if(score_item.color=="#fff100"){
+            yellowscore=score_item.score;
+       }
+       if(!score_item.remark){
+       	score_item.remark="";
+       }
+	});
+	var scoresStr=JSON.stringify(ratm_item.scores);
+	var repeatTime=ratm_item.repeat?ratm_item.repeat:"0";
+	%>
+				<div class="score_item flex editCoreDetail disNone" data-rtamId='<%=ratm_item.ratmId%>'  data-scoreranges='<%=ratm_item.scoreranges%>' data-warnScore='<%=redscore%>' data-scoreArr='<%=scoresStr%>'>
+					<div class="width40 rtamName" data-name='<%=ratm_item.name%>'><%=ratm_item.name%></div>
+					<div class="width40 flex textC c2">
+					<!--如果为第一课时显示-->
+					<%if(lessonNo==1){%>
+						<div class="sub_item_detail estimateItem">
+							<span class="score_pre">&lt;</span>
+							<span class="score estimate" data-value='<%=ratm_item.estimateValue%>' data-estimate='<%=ratm_item.estimate%>'><span><%=ratm_item.estimateValue%></span></span>
+							<span class="score_next">&gt;</span>
+						</div>
+						<%}%>
+						<div class="sub_item_detail scoreItem">
+							<span class="score_pre">&lt;</span>
+							<span class="score scoreValue" data-value='<%=ratm_item.scoreValue%>' data-scoreid='<%=ratm_item.scoreId%>' ><span><%=ratm_item.scoreValue%></span></span>
+							<span class="score_next">&gt;</span>
+						</div>
+						<!--如果为第一课时和第二课时则显示-->
+						<%if(lessonNo==1||lessonNo==2){%>
+						<div class="sub_item_detail repeatItem" style="visibility:hidden">
+							<span class="score_pre">&lt;</span>
+							<span class="score repeat" data-value='<%=repeatTime%>'><span><%=repeatTime%></span></span>
+							<span class="score_next">&gt;</span>
+						</div>
+						<%}%>
+					</div>
+					<div class="width20"></div>
+				</div>
+				<div class="score_item flex showCoreDetail"  data-rtamId='<%=ratm_item.ratmId%>' data-scoreArr='<%=scoresStr%>'>
+					<div class="width40 rtamName" data-name='<%=ratm_item.name%>'><%=ratm_item.name%></div>
+					<div class="width40 flex textC">
+					<!--如果为第一课时显示-->
+					  <%if(lessonNo==1){%>
+						<div class="score estimate" data-value='<%=ratm_item.estimateValue%>' data-estimate='<%=ratm_item.estimate%>'> <span><%=ratm_item.estimateValue%> </span></div>
+					   <%}%>
+						<%if(redscore==ratm_item.scoreValue){%>
+						<div class="score scoreValue" data-value='<%=ratm_item.scoreValue%>' data-scoreid='<%=ratm_item.scoreId%>' >
+						  <span class="lhscore" ><%=ratm_item.scoreValue%></span> 
+						</div>
+							<%}else{%>
+						      <div class="score scoreValue" data-value='<%=ratm_item.scoreValue%>' data-scoreid=<%=ratm_item.scoreId%> >
+						         <span><%=ratm_item.scoreValue%></span> 
+						      </div>
+								<%}%>
+					<!--如果为第一课时和第二课时则显示-->
+					<%if(lessonNo==1||lessonNo==2){%>
+						<div class="score repeat" data-value='<%=ratm_item.repeat%>' style="visibility:hidden"> <span><%=ratm_item.repeat%> </span></div>
+						<%}%>
+					</div>
+					<div class="width20"></div>
+				</div>
+	 <%})%>
+  </div>
+  </div>
+<%})%>
+<%})%>
+</div>
+</div>
+<%}%>
+<!--上传-->
+<div id="afterUploadScore">
+	
+</div>
+</script>
+<script id ='afterUploadScore_template' type = 'text/x-underscore-template'>
+<% if(result) {%>
+<!--存在问题列表-->
+<div id="problem">
+<!--红色项-->
+<div class="red_problem">
+	<p class="problem_title">红色项得分项及评语</p>
+	<div class="problem_list">
+    <%_.each(result.cItem,function(item,index){
+    if(item.color=="#f00"){%>
+      <%_.each(item.subjects,function(sub_item,index){%>
+      <div class="problemItems" data-subjectId='<%=sub_item.subjectId%>'>
+   	   <div class="red_problem_title problem-title">
+   	    <%=sub_item.subjectName%>
+        <p class='remarkText'>
+          <input class='remark-input' type='text'>
+          <img src="../base/img/edit.ing" alt="" width="25px">
+        </p>
+      </div>
+      <%_.each(sub_item.ratms,function(ratm_item,index){%>
+      	   <div class="problem_item flex" data-ratmId='<%=ratm_item.ratmId%>'>
+            <%=ratm_item.name%>
+             <!--<p class="width20"></p>
+             <p class='width70 remarkText c2'></p>
+             <p class='remarkTextIcon width10'><img src="../base/img/edit.ing" alt="" width="25px"></p>-->
+	       </div>
+      	<%})%>
+      </div>
+   	  <%})%>
+	 <%}%>
+	<%})%>
+   </div>
+  </div>
+  <!--红色项end-->
+  <!--黄色项-->
+  <div class="yel_problem">
+	<p class="problem_title">黄色项得分项及评语</p>
+	<div class="problem_list">
+    <%_.each(result.cItem,function(item,index){
+    if(item.color=="#fff100"){%>
+      <%_.each(item.subjects,function(sub_item,index){%>
+      	<div class="problemItems" data-subjectId='<%=sub_item.subjectId%>'>    
+   	   <div class="yel_problem_title problem-title">
+   	    <%=sub_item.subjectName%>
+        <p class='remarkText'>
+          <input class='remark-input' type='text'>
+          <img src="../base/img/edit.ing" alt="" width="25px">
+        </p>
+      </div>
+      <%_.each(sub_item.ratms,function(ratm_item,index){%>
+      	   <div class="problem_item flex" data-ratmId='<%=ratm_item.ratmId%>'>
+            <%=ratm_item.name%>
+             <!--<p class="width20"></p>
+             <p class='width70 remarkText c2'></p>
+             <p class='remarkTextIcon width10'><img src="../base/img/edit.ing" alt="" width="25px"></p>-->
+	       </div>
+      	<%})%>
+      </div>
+   	  <%})%>
+	 <%}%>
+	<%})%>
+   </div>
+  </div>
+   <!--黄色项end-->
+</div>
+<!--待提升能力指标列表-->
+<div id="disadvantage">
+<p class="item_title c2">待提升能力指标（加"<span class="advan-list-star">*</span> "为必选项）</p>
+   <div class="advan-wrapper flex">
+   <ul class="advan-list width25">
+   	<%_.each(result.ability,function(liitem,index){%>
+        <li data-value='<%=JSON.stringify(liitem)%>' <%if (liitem.check) {%>class='has-checked'<%}%>>
+        <%=liitem.passed?"":"<span class='advan-list-nopass'>*</span>"%>
+        <%=liitem.name%>
+        </li>
+	<%})%>
+   </ul>
+   <div class="advan-checked-list width75">
+   	</div>
+  </div>
+ </div>
+ <!--补充评语-->
+<div id="otherInfo">
+  <p class="item_title"><%=lang.otherInfo%></p>
+  <textarea class="otherinfo_text" maxlength=200></textarea>
+</div> 
+  <% if(lessonNo==3){%>
+  	<!--总结(第三课时才显示)-->
+  	<div id="summary">
+     <div class="summary-wrapper">
+     <div class="summary-report">
+      <p class="goto-other-report">
+        <% for (var i=0; i<result.lessons.length; i++) {
+          if (result.lessons[i].resultId) { %>
+        <a href="#com.ebt.report/ownReportDetail?resultId=<%=result.lessons[i].resultId%>">第<%=result.lessons[i].lessonNo%>课报告</a>
+        <%}}%>
+      </p>
+     </div>
+     <div class="summary-refer">
+      <p class="c2">参考结论<span class="summary-refer-span"><%=result.passed==='0'?'不通过':'通过'%></span></p>
+     </div>
+     <div class="summary-header">
+     	<p class="summary-title c2">熟练检查结论</p>
+     	<p class="summary-pass">
+     	<label><input type="radio" name="pass" value="pass" checked>合格</label>
+     	<label><input type="radio" name="pass" value="unpass">不合格</label>
+     	</p>
+      
+     </div>
+     <ul class="summary-list">
+     	<% _.each(result.lessons,function(item,index){%>
+         <li>
+          <p><%=item.score%></p><p><%=item.name%></p></li>
+     		<%})%>
+     </ul>
+     </div>
+     </div>
+<%}%>
+<%}%>
+</script>
+<script id ='disadvantageItem_template' type = 'text/x-underscore-template'>
+<!--待提升能力指标列表子项目列表-->
+<% if(result) {%>
+   <div class="advan-tile textC"><%=result.name%></div>
+   <div id="advan-item-wrapper">   
+   <div class="advan-item-list" data-value='<%=JSON.stringify(result)%>'>
+   	<%_.each(result.children,function(ratmItem,index){%>
+   		<div class='advan-item c2' data-abilityId='<%=ratmItem.abilityId%>'>
+   		<label>
+   		<input type="checkbox" value=<%=ratmItem.name%> name='advanItem' <% if(ratmItem.check){%>checked<%}%>><%=ratmItem.name%>
+   		</label>
+   		</div>
+	<%})%>
+   </div>
+   </div>
+<%}%>
+</script>
+<script id ='advan_checked_item_template' type = 'text/x-underscore-template'>
+<!--待提升能力指标列表子项目列表-->
+<% if(result) {
+   _.each(result,function(item,index){
+   	if(item.check){%>
+   	<!--如果待提升能力项被选中-->
+   	 <div class="advan-checked-item" data-value='<%=item.abilityId%>'>
+        <div class="advan-checked-item-title"><%=item.name%></div>
+   		<%
+   		_.each(item.children,function(child,index){
+   			if(child.check){%>
+   			<!--显示被选中的能力项目-->
+                <p class="c2" data-value='<%=child.ratmid%>'> <%=child.name%></p>
+   				<%}%>
+   			<%})%>
+   	 </div>
+   	<%}})%>
+<%}%>
+</script>

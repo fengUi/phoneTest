@@ -1,0 +1,172 @@
+<style type="text/css" media="all">
+    
+	.chooseaddr{
+      overflow: hidden;
+      margin-top: 20px;
+      margin-bottom: 20px;
+	}
+	.ca_title{
+		float: left;
+		width: 15%;
+		height: 40px;
+		line-height: 40px;
+		margin-left: 20px;
+	}
+	.ca_items{
+		float: left;
+		width:80%;
+	}
+	.ca_items li{
+		float:left;
+		padding:0px 10px;
+		
+		background: #76a9e1;
+		height: 40px;
+		color: #fff;
+        border-right: 1px solid #fff;
+		line-height: 40px;
+		cursor: pointer;
+	}
+	.ca_items li:first-child {
+	    border-top-left-radius: 7px;
+	    border-bottom-left-radius: 7px;
+    }
+    .ca_items li:last-child {
+	    border-top-right-radius: 7px;
+	    border-bottom-right-radius: 7px;
+     }
+	.cg_title{
+		position: relative;
+		height: 40px;
+		line-height: 40px;
+		margin-left: 20px;
+	}
+	.cg_total i{
+		font-style: normal;
+		margin-left: 20px;
+	}
+	.cg_edit{
+		position: absolute;
+		top:5px;
+		left:400px;
+		height: 30px;
+		line-height: 30px;
+		width: 100px;
+		text-align: center;
+		background: #B54E09;
+		cursor: pointer;
+
+	}
+	.cg_list>li{
+       border:1px solid #ccc;
+       
+       margin-top: -1px;
+	}
+	.bg_item{
+		position: relative;
+		overflow: hidden;
+	}
+	.bg_actypes,.bg_name,.bg_stuwrap{
+		float:left;
+	}
+	.bg_actypes{
+		width: 10%;
+		text-align: center;
+		 height: 40px;
+       line-height: 40px;
+	}
+	.bg_name{
+		width: 15%;
+		text-align: center;
+	   border-left:1px solid #ccc;
+       border-right:1px solid #ccc;
+        height: 40px;
+       line-height: 40px;
+      box-sizing:border-box;
+	-webkit-box-sizing:border-box; 
+	}
+	.bg_stuwrap{
+		width:75%;
+		text-align: center;
+	}
+	.bg_stulist li{
+		float: left;
+		width: auto;
+		text-align: center;
+		  height: 40px;
+       line-height: 40px;
+       margin-right: 5px;
+       margin-left: 10px;
+	}
+	#wrapper {
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+	}
+	#scroller {
+	    position: absolute;
+	    top: 4px;
+	    z-index: 1;
+	    width: 100%;
+	}
+	.choosegroup{
+		position: relative;
+		height: 450px;
+	}
+	.cg_detail{
+		 position: absolute;
+	    top: 40px;
+	    width: 90%;
+	    height: 400px;
+	    z-index: 0;
+	    margin: auto 0;
+	    margin-left: 30px;
+	}
+	.startLession{
+		text-align: center;
+		height: 40px;
+		width: 80%;
+		line-height: 40px;
+		font-size: 2.4rem;
+		border-radius: 5px;
+		border:1px solid #339cd3;
+		margin: 20px auto 10px auto;
+		background: #339cd3;
+		color: #fff;
+		cursor: pointer;
+	}
+	.ca_items .actives{
+		background: -webkit-linear-gradient(left, #E99417 20%, #B54E09 100%);
+	}
+	.activeg{
+		background: -webkit-linear-gradient(left, #E99417 20%, #B54E09 100%);
+	}
+	h1{
+		font-weight: normal;
+	}
+	.time{
+		margin-left: 62px !important;
+	}
+	header>img{
+		position:absolute;
+		top: 0px;
+		left: 0px;
+		padding: 18px 24px;
+	}
+</style>
+
+<script type="text/x-underscore-template">//put your template here</script>
+<header class="top-title c1 fs24">
+	<img class="back" src = '../base/img/back.ing'>	
+	<h1 class="title textC"></h1>
+</header>
+<!-- header -->
+<div id="content"></div>
+<!-- footer -->
+<!-- 遮罩层 -->
+<div class="masker"></div>
+<footer class = 'footer-menu'></footer>

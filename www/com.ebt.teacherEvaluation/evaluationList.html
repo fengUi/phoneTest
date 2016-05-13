@@ -1,0 +1,301 @@
+<style type="text/css" media="all">
+/*put your style here*/
+.leftTop {
+    left: 0 !important;
+    padding: 0 24px;
+}
+.current_time {
+    position: absolute;
+    left: 100px;
+    top: 15px;
+}
+.aside {
+    width: 154px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(../base/img/shadow.ing);
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+.content {
+    position: absolute;
+    top: 60px;
+    bottom: 40px;
+    height: auto !important;
+    width: auto !important;
+    z-index: 0;
+}
+.content:before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    bottom: 0;
+    width: 14px;
+    background: #E89216;
+    left: 64px;
+    margin-left: -3px;
+}
+#wrapper {
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+}
+#scroller {
+    position: absolute;
+    top: 4px;
+    z-index: 1;
+    width: 100%;
+}
+.ev_lists {
+    padding: 0 20px 0 172px;
+    margin: 0 auto;
+}
+.ev_wrap {
+    
+    height: auto;
+    width: 100%;
+    padding-top: 2px;
+    position: relative;
+    padding-bottom: 24px;
+}
+.year {
+    background-image: url(../base/img/time_base.ing);
+    background-repeat: no-repeat;
+     position: absolute;
+    left: -126px;
+    width: 84px;
+    height: 92px;
+    color: #fff;
+    border-radius: 50px;
+    margin: -6px 0 0 -20px;
+    line-height: 85px;
+    text-align: center;
+}
+.ev_title{
+    height: 40px;
+    line-height: 40px;
+    font-size: 2rem;
+    background: #339cd3;
+    color: #fff;
+    position: relative;
+}
+.ev_cb{
+    position: absolute;
+    left:10px;
+}
+.ev_t{
+    position: absolute;
+    left:320px;
+}
+.ev_s{
+    position: absolute;
+    left:500px;
+}
+.ev_content{
+    overflow: hidden;
+   
+}
+.ev_item{
+    border: 1px solid #ccc; 
+}
+.ev_cname{
+    float: left;
+    width:25%;
+    padding-left: 10px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; 
+    -webkit-box-sizing:border-box;
+    border-right: 1px solid #ccc; 
+}
+.ev_cname p{
+   
+    line-height: 35px;
+}
+.ev_teacher{
+    float: left;
+    width: 75%;
+}
+.teacher_list{
+    height: 35px;
+    line-height: 35px;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+}
+.teacher{
+    margin-left: 100px;
+}
+.status{
+    position: absolute;
+    left: 280px;
+}
+.ev_href{
+    cursor:pointer;
+    position: absolute;
+    left: 450px;
+}
+.searchDailog {
+    width: 500px;
+    height: 206px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+    margin-left: -250px;
+    margin-top: -103px;
+    background-color: #FFFFFF;
+    display: none;
+    border-radius: 10px;
+}
+.searchLabel {
+    position: relative;
+    border-bottom: 2px solid #D0D0D0;
+    height: 50px;
+    line-height: 50px;
+    color: #231A15;
+    display: block;
+}
+.cancelBtn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 18px;
+    color: #319CD0;
+}
+.confirmBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 18px;
+    color: #319CD0;
+}
+.searchItem {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 18px;
+    border-bottom: 2px solid #D0D0D0;
+}
+.searchItemName {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #231A15;
+}
+.chooseCourseTime {
+    width: 160px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #319CD0;
+    padding-right: 64px;
+    background-image: url(../base/img/chooseCourseTime.ing);
+    background-repeat: no-repeat;
+    background-position: 180px 12px;
+}
+#courseYear,
+#courseYearperiod {
+    display: inline-block;
+    color: #319CD0;
+}
+#courseYearperiod {
+    margin-left: 5px;
+}
+#courseName {
+    position: absolute;
+    left: 90px;
+    right: 25px;
+    height: 100%;
+    color: #329DD1;
+    line-height: 26px;
+    width: 357px;
+    box-shadow: none !important;
+}
+input::-webkit-input-placeholder {
+    color: #DCDEDD !important;
+    font-size: 20px !important;
+    line-height: 26px !important;
+}
+.ev_cname .btag{
+    color: #339cd3;
+}
+</style>
+
+<script type="text/x-underscore-template">
+//put your template here
+</script>
+<header class="top-title c1 fs24">
+    <!--<div class="time leftTop fs20" id="showTime"></div>-->
+    <div class="time leftTop">
+        <img src="../base/img/back.ing" alt="">
+    </div>
+    <!--页眉显示当前日期和时间：YYYY-MM-DD 星期（三字英文字母缩写，如Fri） HH：MM-->
+    <div class="current_time" id="showTime">
+        
+    </div>
+    <h1 class="title textC">
+        <%=lang.teacherevaluation%>
+    </h1>
+    <div class="rightTop">
+       
+        <div class="search">
+            <img src="../base/img/search.ing" alt="">
+        </div>
+       
+    </div>
+</header>
+
+<div class="content">
+    <div class="aside"></div>
+    <div id="wrapper">
+        <div id="scroller">
+        	
+        </div>
+    </div>
+</div>
+
+<!-- 搜索框 -->
+<div class="searchDailog fs20">
+    <div class="searchForm">
+        <label class="searchLabel textC">
+           
+            <%=lang.courseQuery%>
+             
+        </label>
+        
+        <div class="searchItem" id="chooseCourseTime">
+            <div class="searchItemName">
+                <%=lang.courseTime%>
+            </div>
+            <div class="chooseCourseTime">
+                <div id="courseYear">
+                    
+                </div>
+                <div id="courseYearperiod">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="searchItem" style="border-bottom:none;">
+            <div class="searchItemName">
+                <%=lang.courseName%></div>
+            <input type="text" id="courseName" placeholder="<%=lang.keywords%>">
+        </div>
+
+        <div class="searchItem">
+              <span class="confirmBtn">查询</span>
+              <span class="cancelBtn">取消</span>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-menu">
+	
+</footer>
+<div class="masker"></div>

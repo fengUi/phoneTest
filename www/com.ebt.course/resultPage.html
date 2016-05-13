@@ -1,0 +1,666 @@
+<style type="text/css" media="all">
+/* put your style here */
+
+html {
+    font-size: 68.5%
+}
+
+.top-title {
+    font-size: 24px;
+}
+
+.rightTop {
+    font-size: 18px;
+}
+
+.content {
+    position: relative;
+    width: 96%;
+    margin: 0 auto;
+    height: 638px;
+    -webkit-user-select: none;
+}
+
+.scorelist {
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.item_title {
+    text-indent: 1em;
+    margin-top: 15px;
+    line-height: 30px;
+}
+
+.sub_top {
+    overflow: hidden;
+    line-height: 40px;
+    background: #329dd1;
+    position: relative;
+    height: 40px !important;
+}
+
+.score_type,
+.sub_list {
+    padding: 0 40px 0 20px;
+    -webkit-box-sizing: border-box;
+}
+
+.sub_list {
+    padding-top: 10px;
+}
+
+.sub_item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    min-height: 50px;
+}
+
+.sub_item:last-child {
+    border-bottom: none;
+}
+
+.sub_item_title {
+    line-height: 30px;
+}
+
+.sub_title_pic {
+    letter-spacing: 1.5em;
+}
+
+.repeat_item,
+.grade_item,
+.score_item {
+    -webkit-box-sizing: border-box;
+    line-height: 30px;
+    position: relative;
+    margin-top: 5px;
+}
+/*.repeatAver{max-width:125px;}*/
+
+.repeat_item>div:first-child,
+.grade_item>div:first-child,
+.score_item>div:first-child {
+    color: #aeaeb0;
+}
+
+.sub_item_detail {
+    font-size: 0;
+}
+
+.sub_item_detail>span {
+    display: inline-block;
+    width: 50px;
+    border: 1px solid #329dd1;
+    border-left: none;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.sub_item_detail>span:first-child {
+    border-left: 1px solid #329dd1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.sub_item_detail>span:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.sub_item_detail>span.active {
+    background: #329dd1;
+    color: #fff;
+}
+
+.score_pre,
+.score_next,
+.repeat_pre,
+.repeat_next {
+    width: 25px !important;
+    background: #329dd1;
+    color: #fff;
+}
+
+.score_pre:active,
+.score_next:active,
+.repeat_pre:active,
+.repeat_next:active {
+    background: #dddddd;
+}
+/* 默认不显示可编辑项 */
+
+.disNone {
+    display: none;
+}
+
+#wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 40px;
+    z-index: 1;
+    width: 100%;
+    height: 638px;
+    overflow: hidden;
+}
+
+#scroller {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.problem_list {
+    background: #fff;
+    padding: 0px 15px;
+    border: 1px solid #c8c8c8;
+    border-top: 2px solid #309ecf;
+    word-break: break-all;
+}
+
+.problem_item {
+    padding: 7px 0;
+    position: relative;
+    /*border-bottom: 1px solid #e6e6e6;*/
+    font-size:1.8rem;
+    text-indent:2rem;
+}
+.problem_item.required {
+  color:#f00;
+}
+.problem-title.required {
+  color:#f00;
+}
+.problem_list .problem_item:last-child {
+    border-bottom: none;
+}
+
+.problem_item p {
+    margin-right: 15px;
+}
+
+.otherinfo_text {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.otherinfo_title {
+    background: #29a7e1;
+    position: relative;
+    border-radius: 5px;
+    padding: 3px 0
+}
+
+.otherinfo {
+    position: relative;
+}
+
+.info_img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px;
+}
+
+.info_img img {
+    width: 22px;
+    padding: 10px;
+    margin-right: 5px;
+    margin-top: -10px;
+}
+
+.improve textarea {
+    box-shadow: none;
+}
+/* 底部提交按钮 */
+
+.BtnLabel {
+    height: 70px !important;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    z-index: 9;
+    background: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.zcun {
+    background: url("../base/img/zanc.ing") no-repeat center 0;
+}
+
+.verifiLession,
+.submit {
+    background: url("../base/img/over.ing") no-repeat center 0;
+}
+
+.zcun,
+.verifiLession,
+.submit {
+    height: 70px;
+    width: 180px;
+    display: inline-block;
+    line-height: 110px;
+    color: #309ecf;
+    background-size: 40px 40px;
+}
+
+.zcun:active {
+    background: url("../base/img/zancA.ing") no-repeat center 0;
+}
+
+.verifiLession:active,
+.submit:active {
+    background: url("../base/img/overA.ing") no-repeat center 0;
+}
+
+.verifiLession:active,
+.zcun:active,
+.submit:active {
+    background-size: 40px 40px;
+    background-color: #309ecf;
+    color: #fff;
+}
+
+.uploadTip {
+    display: none;
+    height: 150px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    margin-top: -75px;
+    left: 50%;
+    margin-left: -150px;
+    background: #fff;
+    z-index: 99;
+    border-radius: 5px;
+}
+
+.footBtn {
+    border-top: 1px solid #ddd;
+    line-height: 40px;
+}
+
+.upload_cancel {
+    border-right: 1px solid #ddd;
+}
+
+.tipmsg {
+    padding: 35px 50px;
+}
+
+.remark {
+    position: absolute;
+    right: -30px;
+    top: 0;
+}
+
+.remark>img {
+    width: 30px;
+    height: 30px;
+}
+
+.remarkText {
+  float:right;
+  position: relative;
+}
+.remarkText>input[type="text"] {
+  color: #000;
+  box-shadow: none;
+  border: 1px solid #339cd3;
+  border-top: none;
+  height: 30px;
+  border-right: none;
+  width:250px;
+}
+.remarkText:before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:2px;
+  height:50%;
+  background:#fff;
+}
+.remarkText>img {
+    width: 30px;
+    height: 30px;
+    float: right;
+    background:#fff;
+}
+
+textarea:focus {
+    color: #000
+}
+
+.showCoreDetail .score span {
+    margin: 0 auto;
+    display: inline-block;
+    width: 30px;
+}
+
+.lhscore {
+    background: #f00;
+    border-radius: 15px;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.toggleDown,
+.showCore,
+.itemCantain,
+.editrepeat {
+    display: none;
+}
+
+.toggleDown,
+.showCore,
+.toggleUp,
+.editCore {
+    padding: 10px;
+    margin-top: -10px;
+}
+
+.rightTop {
+    right: 24px !important;
+}
+
+.leftTop span {
+    margin-left: 62px;
+}
+
+.leftTop img {
+    position: absolute;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 18px;
+    padding-bottom: 17px;
+}
+
+.estAver,
+.scoreAver,
+.repeatAver {
+    min-width: 33%
+}
+/*.otherInfo,.improve{display: none;}*/
+/*新增样式*/
+
+.red_problem,
+.yel_problem {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.problem_title {
+    background: #339cd3;
+    color: #fff;
+    text-indent: 1em;
+    line-height: 40px;
+}
+
+.red_problem .problem_title {
+  background: #E60211;
+}
+.red_problem .problem_list {
+  border-top-color: #E60211;
+}
+.yel_problem .problem_title {
+  background: #FEC716;
+}
+.yel_problem .problem_list {
+  border-top-color: #FEC716;
+}
+
+.advan-wrapper {
+    border: 1px solid #c7c7c9;
+    background: #fff;
+}
+
+.advan-wrapper,
+.advan-list {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+}
+
+.advan-list li {
+    color: #fff;
+    background: -webkit-linear-gradient(left, #E99417 20%, #B54E09 100%);
+    line-height: 60px;
+    padding-left: 26px;
+    position:relative;
+    border-bottom: 1px solid #EFA664;
+}
+.advan-list li.has-checked {
+  color: rgba(255,255,255,0.4);
+}
+
+.advan-dailog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    background: #fff;
+    display: none;
+    width: 500px;
+    height: 350px;
+    margin-left: -250px;
+    margin-top: -175px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.summary-pass input,
+.advan-item input {
+    -webkit-appearance: none;
+    background-image: url("../base/img/unchecked_01.ing");
+    background-size: 100%;
+    height: 20px;
+    width: 20px;
+    border:none;    
+    border:none;
+}
+.summary-pass input {
+  vertical-align:top;
+}
+
+.summary-pass input:checked,
+.advan-item input:checked {
+    background-image: url("../base/img/checked_01.ing");
+}
+
+.advan-content {
+    position: relative;
+    height:100%;
+}
+
+.advan-tile {
+    line-height: 50px;
+    background: #f9f9f9;
+}
+
+#advan-item-wrapper {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    width:100%
+}
+
+.advan-item-list {
+    padding: 10px;
+    line-height: 40px;
+}
+
+.advan-cancel,
+.advan-confirm {
+    position: absolute;
+    top: 15px;
+}
+
+.advan-cancel {
+    left: 20px;
+}
+
+.advan-confirm {
+    right: 20px;
+}
+
+.advan-checked-list {
+    padding-left: 20px;
+}
+
+.advan-checked-item {
+    padding-bottom: 10px;
+}
+
+.advan-checked-item-title {
+    border-bottom: 1px solid #339cd3;
+    line-height: 50px;
+}
+
+.summary-header {
+  padding-top:10px;
+  height:48px;
+}
+.summary-title {
+  float:left;
+}
+.summary-pass {
+    float:left;
+}
+
+.summary-pass label {
+    margin-left: 25px;
+}
+.yel_problem_title, .red_problem_title {
+  border-bottom: 1px solid #e6e6e6;
+  padding:8px 0;
+  font-weight:bold;
+}
+.summary-list {
+  display:none;
+}
+.goto-other-report {
+  float:left;
+}
+.goto-other-report a {
+  margin-right: 20px;
+  text-decoration: underline;
+}
+.uploadTip, .uploadTip2 {
+	display: none;
+	height: 176px;
+	width: 450px;
+	position: absolute;
+	top: 50%;
+	margin-top: -95px;
+	left: 50%;
+	margin-left: -225px;
+	background: #fff;
+	z-index: 99;
+	border-radius: 5px;
+}
+.bgred{background: #f00;padding:0px 15px;margin-right:5px;}
+.bggreen{background: rgb(56, 182, 56);padding:0px 15px;margin-right:5px;}
+.ifPass {
+	padding: 20px 10px 0 10px;
+}
+.tipmsg, .tipmsg2 {
+	padding: 20px 50px 0 50px;
+}
+.tipmsg2 {
+  padding-top:48px;
+}
+.footBtn {
+  border-top: 1px solid #ddd;
+  line-height: 52px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+.upload_cancel {
+  border-right: 1px solid #ddd;
+}
+.upload_cancel2 {
+  border-right: 1px solid #ddd;
+}
+.summary-report {
+  height:48px;
+}
+.advan-list-nopass {
+  position:absolute;
+  font-size:4.5rem;
+  left: 4px;
+  top: 8px;
+  bottom:0;
+}
+.advan-list-star {
+  font-size: 4.5rem;
+  height: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -11px;
+}
+.summary-refer-span {
+  margin-left: 26px;
+  color: #000;
+}
+</style>
+<script type="text/x-underscore-template">//put your template here</script>
+<!-- header -->
+<header class="top-title c1">
+    <div class="leftTop">
+        <img src="../base/img/back.ing" alt="" class="back">
+        <span class="courseInfo"></span>
+    </div>
+    <div class="rightTop"></div>
+</header>
+<!-- uncomment this if you want a sencondary-bars
+
+<nav class="bar-standard bar-header-secondary"></nav>
+-->
+<!-- content -->
+<div class="content fs20">
+    <div id="wrapper">
+        <div id="scroller"></div>
+    </div>
+</div>
+<div class="BtnLabel textC">
+    <div class="zcun">
+        <%=lang.save%>
+    </div>
+    <div class="verifiLession">
+        <%=lang.submit%>
+    </div>
+</div>
+<div class="masker"></div>
+<div class="advan-dailog">
+    <div class="advan-content">
+    </div>
+    <div class="advan-cancel c2 fs16">
+        取消
+    </div>
+    <div class="advan-confirm c2 fs16">
+        确认
+    </div>
+</div>
+<div class="uploadTip textC fs20">
+  <div class="ifPass c2"><span class="ifPassStatus"></span><span class="ifPassText"></span></div>
+  <div class="tipmsg c0">课程结果成功提交到本地！</div>
+  <div class="footBtn flex c2">
+    <div class="upload_cancel">取消</div>
+    <div class="upload_Confirm">确定</div>
+  </div>
+</div>
+<div class="uploadTip2 textC fs20">
+  <div class="tipmsg2 c0">是否提交当前评语！</div>
+  <div class="footBtn flex c2">
+    <div class="upload_cancel2">取消</div>
+    <div class="upload_Confirm2">确定</div>
+  </div>
+</div>

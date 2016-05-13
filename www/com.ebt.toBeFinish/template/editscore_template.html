@@ -1,0 +1,214 @@
+<script id="editscore_template" type="text/x-underscore-template">
+<header class="top-title c1 fs24">
+	<h1 class="title textC">
+	   <%=courseYear%><%=courseYearperiod%><%=courseName%>
+
+	</h1>
+	<div class="time leftTop">
+		<img src="../base/img/back.ing" alt="">
+	</div>
+
+</header>
+<%
+	  console.log(obj)
+      function request(paras) {
+      var url = location.href;
+      var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+
+      var returnValue;
+      for (i = 0; i < paraString.length; i++) {
+        var tempParas = paraString[i].split('=')[0];
+        var parasValue = paraString[i].split('=')[1];
+
+        if (tempParas === paras)
+          returnValue = parasValue;
+      }
+
+      if (typeof(returnValue) == "undefined") {
+        return "";
+      } else {
+        return returnValue;
+      }
+
+        }
+   %>
+<div class="stu_wrap">
+	 <ul class="stulist">
+	 <%_.each(obj.groups[request("groupIndex")].students,function(studentitem,index){%>
+	      <li class=<%=(index==0)?"active":""%>><%=studentitem.studentName%></li>
+	 	<%})%>
+	 </ul> 
+</div>
+<div class="wrap">
+ <%_.each(groups[request("groupIndex")].students,function(studentitem,sindex){%>
+ 	<div class="content" id=content_<%=sindex%> style=display:<%=(sindex>0)?"none":"block"%>>
+         <aside class="sub_aside">
+		    <h3 class="sub_title">(<%=studentitem.skillName%>)科目列表</h3>
+			<ul class="sub_list">
+			   <%_.each(studentitem.subjects,function(subjectItem,index){%>
+					 <li data-sindex=<%=sindex%> class=<%=(index==0)?"sub_active":""%>><span><%=subjectItem.seq%></span><%=subjectItem.subjectName%></li>
+			 <%})%>
+				 
+			</ul>
+		 </aside>
+		 <div class="jtas_wrap">
+		    <div class="jt_title">
+	          <span class="jt_st">成绩列表</span>
+	          <span class="jt_sa">成绩评定</span>
+	       </div>
+	        <div  id=wrapper<%=sindex%>>
+	           <div id="scroller">
+	                <%_.each(studentitem.subjects,function(subjectItem,index){%>
+				        <div class="jtas_item" style=<%=(index>0)?"display:none":""%>>
+				             <%_.each(subjectItem.jtas,function(jtasItem,index){%>
+					   	  <div class="jtas_list">
+					   	   
+							<h3>
+							 <%=jtasItem.jtaName%>
+							 <div class="tag">
+							 <img src="../base/img/sedit.png" alt="编辑" class="edit" >
+							 <img src="../base/img/sdetial.png" alt="详情" class="detail" >
+							<%   var arr=jtasItem.cJtas;
+							      var len=0;
+							      var sum=0;
+							      var average;
+							      for(var i=0;i<arr.length;i++){
+							      	  if(arr[i].score){
+							      	  		sum+=parseFloat(arr[i].score.score);
+							      	  		len++;
+							      	  }
+							      
+							      }
+							      if(len==0){
+							      	average="";
+							      }else{
+							      	 average=(sum/len).toFixed(1);
+							      }
+							     
+							   %>
+							<span class="average">
+	                              <%=average%>
+							</span>
+							</div>
+							</h3>
+
+							 <ul class="cjt_list" >
+								<%_.each(jtasItem.cJtas,function(cjtasItem,c_index){%>
+									
+										<li class="active">
+											 <%=cjtasItem.cJtaName%>
+											 <span class="c_score" style="display:none;">
+											    <%
+											        var score;
+											        if(cjtasItem.score){
+                                                        score=cjtasItem.score.score;
+											        }else{
+											        	score="";
+											        }
+											    %>
+											    <%=score%>
+											 </span>
+											
+											     <%
+											      if(cjtasItem.score){%>
+											      	<select class="s_score">
+											    <% _.each(cjtasItem.scores,function(cjtasscore,index){
+											    	if(cjtasItem.score.score==cjtasscore.score){%>
+													     	   	<option
+													     	   
+		                                                         data-subjectId=<%=subjectItem.subjectId%>
+		                                                         data-cjtaId=<%=cjtasItem.cjtaId%>
+													     	   	 selected="selected"
+													     	   	 data-gId=<%=studentitem.gId%>
+													     	   	 data-index=<%=sindex%>
+													     	   	  data-score=<%=JSON.stringify(cjtasscore)%>><%=cjtasscore.score%></option>
+													     	  <%}
+											     	      else{%>
+											     	  	<option
+											     	  
+											     	  	data-subjectId=<%=subjectItem.subjectId%>
+											     	  	data-cjtaId=<%=cjtasItem.cjtaId%>
+											     	  	data-gId=<%=studentitem.gId%>
+											     	  	 data-index=<%=sindex%>
+											     	  	data-score=<%=JSON.stringify(cjtasscore)%>><%=cjtasscore.score%></option>
+											     	   <%}})%>
+											     	    </select>
+											     	    <%}else{%>
+											     	  
+                                              <select class="s_score u_score">
+                                                    <% _.each(cjtasItem.scores,function(cjtasscore,index){%>
+											     	  	<option 
+
+											     	  	data-subjectId=<%=subjectItem.subjectId%>
+											     	  	data-cjtaId=<%=cjtasItem.cjtaId%>
+											     	  	data-gId=<%=studentitem.gId%>
+											     	  	 data-index=<%=sindex%>
+											     	  	data-score=<%=JSON.stringify(cjtasscore)%>><%=cjtasscore.score%></option>
+											     	   <%})%>
+                                                       </select>
+											     	<%}%>
+										</li>
+									  
+								 <%})%>
+							  </ul>
+						
+							  
+						  </div>
+				         <%})%>
+				        </div>
+				    <%})%>
+                
+	           </div>
+	         </div>
+		 </div>
+		 <div class="other_wrap" >
+	      <div class="otheritem">
+	          <span class="othername">存在问题：</span>
+	          <%
+	          var scoreinfo={
+	          	  "item":[]
+	          };
+	          _.each(studentitem.subjects,function(subjectItem,index){
+	          _.each(subjectItem.jtas,function(jtasItem,index){
+                 _.each(jtasItem.cJtas,function(cjtasItem,c_index){
+                 	   if(cjtasItem.score){
+                 	   	    if(cjtasItem.score.color){
+	                        	var sitem={};
+	                        	sitem.sid=subjectItem.subjectId;
+								sitem.cid=cjtasItem.cjtaId;
+								sitem.score=cjtasItem.score;
+								scoreinfo.item.push(sitem);
+	                             
+	                       }
+                 	   }
+                      
+	          	})})})%>
+	          <div class="othercontent question"  data-value=<%=JSON.stringify(scoreinfo)%>>
+	        
+	          </div>
+	      </div>   
+	      <div class="otheritem">
+	          <span class="othername">其他说明：</span>
+	           <div class="othercontent otherpad" id=otherInfo<%=sindex%>></div>
+	          <img src="../base/img/oedit.png" alt="编辑" class="editinfo" data-value=otherInfo<%=sindex%>>
+	          <img src="../base/img/odel.png" alt="删除" class="delinfo" data-value=otherInfo<%=sindex%>>
+	          <span class="addinfo" data-value=otherInfo<%=sindex%>>添加其他说明</span>
+	      </div> 
+	      <div class="otheritem">
+	          <span class="othername">改进措施：</span>
+	           <div class="othercontent">
+	              <textarea class="txtcommon" id=txtcommon<%=sindex%> maxlength="800"></textarea>
+	          </div>
+	      </div>    
+ 	</div>
+ 	</div>
+<%})%> 
+</div>
+<div class="btnwrap">
+   <div class="w">
+	    <span class="save">暂存</span>
+	    <span class="sub">提交</span>
+	    <span class="backclist">返回课程列表</span>
+    </div>
+</div>
+</script>

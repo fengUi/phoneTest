@@ -1,0 +1,33 @@
+<script type = 'text/x-underscore-template' id = 'roleGroup_template'>
+
+<div id ="role_wrap">
+   <div class="role_wrap_top"><h3>组员角色分配</h3></div>
+   <div class="role_choose">
+      <%_.each(result.students,function(stu,index){%>
+		     <div class="role_item">
+				  <div class="stu_name">
+				      <%=stu.studentName%>
+				  </div>
+				  <div class="role_list">
+				     <ul id="roleGros">
+				   <%
+				     _.each(["乘务长","乘务员","乘务员","乘务员"],function(role,index){%>
+					   
+					   <li class="roleGrolItem"><%=role%></li>
+					   
+					   <%})%>
+					  </ul> 
+				  </div>
+			  </div> 
+		  
+		  <%})%>
+   
+</div>
+ 
+
+</script>
+<div class="trainingPlaceCourseThree textC">
+     <div><img src="../base/realImg/Gbtn.png"</div>
+     <div class="trainingPlaceBtn"><span class="next" >下一步</span></div>
+   </div>	   
+</div>

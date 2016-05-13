@@ -1,0 +1,55 @@
+<script id = 'guidedCourse_template' type = 'text/x-underscore-template'>
+	<%
+	if(typeof obj !== "undefined" && obj !== null && obj !== "" && obj.length !== 0) {
+	%>
+
+
+	<%_.each(obj.datas,function(item,index){%>
+	<div class = 'course'>
+		<div class = 'iconCircle c1 fs26'><%=item.month%>月</div>
+		<ul class = 'refresher'>
+			<%_.each(item.results,function(results_item,results_index){
+			%>
+
+			<li class = 'course_item' data-batchName=<%= results_item.batchName%> data-courseid=<%= results_item.courseId%> >
+				<div class = 'link fs24 c2'>
+					<p class = 'p textC'>
+						<span class = 'courseYear'><%= item.year%>年<%= results_item.courseYearperiod%></span>
+					</p>
+					<p class = 'textC'>
+						<span class = 'courseName'><%= results_item.courseName%></span>
+					</p>
+					
+				</div>
+				<div class = 'courseInfo fs22 c1'>
+					<div class="batchName flex">
+						<p><span>批次：</span><span><%= results_item.batchName%></span></p>
+					</div>
+					<div class="flex" style="line-height: 43px">
+						<div class = 'sum width65 textE'><span>人数：</span><%= results_item.sum%></div>
+					</div>
+					<%
+					var endTime,startTime;
+					if(results_item.endTime){
+						endTime = results_item.endTime.substring(0,10);
+					}
+					if(results_item.startTime){
+						startTime = results_item.startTime.substring(0,10);
+					}
+					%>
+					<p>
+						<span><%= startTime%>至<%= endTime%></span>
+					</p>
+
+					
+				</div>
+
+
+				<%})%>
+			</li>
+		</ul>
+	</div>
+	<%})%>
+	<%}%>
+
+</script>

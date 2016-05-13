@@ -1,0 +1,49 @@
+<script id ="feedBack_template" type = 'text/x-underscore-template'>
+ <%
+  if(typeof result !== "undefined" && result !== null && result !== "" && result.length !== 0) {
+%>  <header class="top-title c1">
+      <div class="time leftTop">
+         <img src="../base/img/back.ing" alt="">
+      </div>
+
+      <h1 class="title textC fs24"><%=result.surveyName%></h1>
+    </header>
+    <div class="info_wrap">
+    <div id="wrapper">
+        <div id="scroller">
+          
+       
+          <div class="instructor_wrap">
+             <span><%=lang.instructor%></span>:<span class="name"></span>
+          </div>
+          <div class="items_wrap">
+               <%_.each(result.subjects,function(subjectItem,index){%>
+                    <div class="item">
+                        <h3><%=index+1%>.<%=subjectItem.subjectName%></h3>
+                        <div class="choose_list">
+                            <ul class="itemlist" data-subjectId=<%=subjectItem.subjectId%>>
+                               <%_.each(subjectItem.items,function(item,index){%>
+                                        <li data-itemId=<%=item.itemId%> data-opt=<%=subjectItem.opt%>><%=item.itemName%></li>
+                                <%})%>
+                            </ul>
+                        </div> 
+                    </div>
+
+                <%})%>
+
+
+          </div>
+          <div  class="suggest_wrap">
+             <h3><%=lang.suggest%></h3>
+             <textarea class="suggest_area" maxlength="800">
+             </textarea>
+          </div>
+          <div class="sub_btn">
+              <span><%=lang.submit%></span>
+          </div>
+      </div>
+    </div> 
+    </div>   
+  <%}%>
+</script>
+ 

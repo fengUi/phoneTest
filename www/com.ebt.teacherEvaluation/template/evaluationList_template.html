@@ -1,0 +1,67 @@
+<script id = 'evaluationList_template' type = 'text/x-underscore-template'>
+<%
+    if(typeof result !== "undefined" && result !== null && result !== "" && result.length !== 0) {
+%> 
+  <div class="ev_lists">   
+  <%_.each(result,function(evYearItems,index){%>
+     <div class="ev_wrap">
+         <div class="year fs26"><%=evYearItems.year%></div>
+         <div class="ev_item">
+             <div class="ev_title">
+                 <span class="ev_cb"><%=lang.coursetitlebatches%></span>
+                 <span class="ev_t"><%=lang.teacher%></span>
+                 <span class="ev_s"><%=lang.status%></span>
+             </div>
+             <div class="ev_listwrap">
+                 <ul class="ev_list">
+
+                    <%_.each(evYearItems.surveys,function(evItem,index){%>
+                     <li class="ev_item">
+                         <div class="ev_content">
+                             <div class="ev_cname">
+                                <p><%=evItem.courseYear%><%=evItem.courseYearperiod%></p>
+                                <p><%=evItem.courseName%></p>
+                                <p class="btag"><%=lang.batch%><%=evItem.batchName%></p>
+                             </div>
+                             <div class="ev_teacher">
+                                 <ul class="teacher_listwrap">
+                                    <%_.each(evItem.instructors,function(instructorItem,index){%>
+                                     <li class="teacher_list">
+                                         <span class="teacher"><%=instructorItem.instructorName%></span>
+                                         <%
+                                            var st=instructorItem.status;
+                                            if(st==1){
+                                                st="已评价"
+                                            }
+                                            if(st==0){
+                                                st="未评价"
+                                            }
+                                         %>
+                                         <span class="status"><%=st%></span>
+                                          
+                                         <% if(instructorItem.status==0){%>
+                                              <img src="../base/img/remark.png" alt="评价" class="ev_href" data-sid=<%=evItem.surveyId%> data-rid=<%=instructorItem.surveyResultId%>
+                                              data-name=<%=instructorItem.instructorName%>
+                                              data-year=<%=evItem.courseYear%>
+                                              data-yearp=<%=evItem.courseYearperiod%>
+                                              >
+                                         <%}%>
+                                            
+                                          
+                                         
+                                     </li>
+                                     <%})%>
+                                 </ul>
+                             </div>
+                         </div>
+                     </li>
+                     <%})%>
+                 </ul>
+             </div>
+         </div>
+     </div>
+  <%})%> 
+  </div>  
+<%}%>
+  
+</script>

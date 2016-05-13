@@ -1,0 +1,33 @@
+{
+    "resultCode": 0,
+    "result": {
+        "datas": [
+            {
+                "year": "2016",
+                "month": "03",
+                "results": [
+                    {
+                        "courseId": 253,
+                        "courseYear": "2016",
+                        "courseYearperiod": "上半年",
+                        "courseName": "课程团体——E145安全",
+                        "batchName": "test1",
+                        "startTime": "2016-03-09 15:23:30.0",
+                        "endTime": "2016-03-09 15:26:34.0",
+                        "sum": "5"
+                    },
+                    {
+                        "courseId": 254,
+                        "courseYear": "2016",
+                        "courseYearperiod": "下半年",
+                        "courseName": "课程团体－安全",
+                        "batchName": "test2",
+                        "startTime": "2016-03-09 15:23:30.0",
+                        "endTime": "2016-03-09 15:26:34.0",
+                        "sum": "5"
+                    }
+                ]
+            }
+        ]
+    }
+}

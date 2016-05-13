@@ -1,0 +1,392 @@
+<style type="text/css" media="all">
+	
+	.cg_title{
+		position: relative;
+		height: 40px;
+		line-height: 40px;
+	}
+	
+	.cg_list>li{
+       border-top:1px solid #ccc;
+       border-bottom:1px solid #ccc;
+       margin-top: -1px;
+	}
+	.bg_item{
+		position: relative;
+		overflow: hidden;
+	}
+	.bg_actypes,.bg_name,.bg_stuwrap{
+		float:left;
+	}
+	.bg_actypes{
+		width: 10%;
+		text-align: center;
+		 height: 40px;
+       line-height: 40px;
+	}
+	.bg_name{
+		width: 15%;
+		text-align: center;
+	   border-left:1px solid #ccc;
+       border-right:1px solid #ccc;
+        height: 40px;
+       line-height: 40px;
+      box-sizing:border-box;
+	-webkit-box-sizing:border-box; 
+	}
+	.bg_stuwrap{
+		width:75%;
+		text-align: center;
+	}
+	.bg_stulist li{
+		float: left;
+		width: 120px;
+		text-align: center;
+		  height: 40px;
+       line-height: 40px;
+       margin-right: 10px;
+	}
+	#wrapper {
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+	}
+	#scroller {
+	    position: absolute;
+	    top: 4px;
+	    z-index: 1;
+	    width: 100%;
+	}
+	.choosegroup{
+		position: relative;
+		height: 450px;
+	}
+	.cg_detail{
+		 position: absolute;
+	    top: 40px;
+	    width: 100%;
+	    height: 400px;
+	    z-index: 0;
+	    margin: auto 0;
+	}
+	
+	.batch_item,.eg_item{
+	    
+		height: 40px;
+	}
+	.bName,.bStart,.bEnd{
+		float: left;
+		position: relative;
+		height: 40px;
+		line-height: 40px;
+		width: 300px;
+		
+	}
+	
+	.bTeacher{
+		float: left;
+		position: relative;
+		height: 40px;
+		line-height: 40px;
+		
+		
+	}
+	.teach_wrap,.searchTeach{
+		position: absolute;
+		top:0px;
+		left:35px;
+	}
+	.searchTeach{
+      left:500px;
+      top:5px;
+      width: 30px;
+      height: 30px;
+	}
+    .bTeacher em{
+    	position: absolute;
+    	left:550px;
+         top:5px;
+         height: 30px;
+         line-height: 30px;
+         width: 200px;
+    }
+    .teach_wrap .batchTeacher{
+    	 width: 450px;
+    }
+    .teach_list{
+    	position: absolute;
+    	top:35px;
+		left:10px;
+		z-index: 99;
+		background: #fff;
+		border: 1px solid #25aae2;
+	    border-radius: 5px;
+	    padding: 2px 8px;
+	    box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+	    -webdit-box-sizing: border-box;
+	    box-sizing: border-box;
+	    display: none;
+    }	
+	.trainDateInputStart,.trainDateInputEnd{
+		position: absolute;
+		top:5px;
+		left: 100px;
+		 width: 150px;
+	    height: 30px;
+	     color: #329DD1;
+	    line-height: 30px;
+	    box-shadow: none !important;
+	    border: 1px solid #29A7E1;
+	    border-radius: 5px;
+	    background: transparent;
+	}
+	.batch_wrap input{
+	    width: 150px;
+	    height: 30px;
+	    margin-left: 10px;
+	    color: #329DD1;
+	    line-height: 30px;
+	    box-shadow: none !important;
+	    border: 1px solid #29A7E1;
+	    border-radius: 5px;
+	    background: transparent;
+	}
+	.eg_group,.eg_actype,.eg_stu{
+		float: left;
+		position: relative;
+		height: 40px;
+		line-height: 40px;
+		width: 300px;
+	}
+	
+	.batch_info{
+		padding:10px;
+		border-bottom: 1px solid black;
+	}
+	.edit_group{
+		padding:10px;
+	}
+	.addGroup{
+		float: left;
+		margin-top: 5px;
+		width: 30px;
+		height: 30px;
+	}
+	.t_list li,.s_list li {
+    line-height: 3rem;
+    height: 3rem;
+    margin-right: 10px;
+   }
+  
+	.t_list li.selected:after,.s_list li.selected:after {
+	    content: "√";
+	    float: right;
+	    margin-left: 10px;
+	}
+	.eg_stu lable{
+		float: left;
+		line-height: 40px;
+		height: 40px;
+		width: 35px;
+	}
+	.stu_wrap{
+		float: left;
+		width: 180px;
+		margin-left: 10px;
+		position: relative;
+	}
+	.stu_list{
+		position: absolute;
+		top:35px;
+		left:0px;
+		width: 350px;
+	    z-index: 99;
+	    background: #fff;
+	    border: 1px solid #25aae2;
+	    border-radius: 5px;
+	    padding: 2px 8px;
+	    box-shadow: 3px 3px 5px rgba(0,0,0,.5);
+	    -webdit-box-sizing: border-box;
+	    box-sizing: border-box;
+	    display: none;
+	}
+	.remark,.remarkGroup {
+	    top: 30%;
+	    height: 200px;
+	    position: fixed;
+	    z-index: 99999999;
+	    background: #797a79;
+	    left: 50%;
+	    margin-left: -125px;
+	    width: 250px;
+	    border-radius: 7px;
+	    display: none;
+	    padding: 10px;
+	    cursor: pointer;
+	    display: none;
+	}
+	.info_item{
+		height: 30px;
+		position: relative;
+		margin-bottom: 10px;
+	}
+	.info_item span{
+		line-height: 30px;
+
+	}
+	.info_at{
+		position: absolute;
+		top:0px;
+		left:60px;
+		height: 40px;
+	}
+	.at_list li{
+		float: left;
+		height: 30px;
+		line-height: 30px;
+		width: 60px;
+		text-align: center;
+		border:1px solid #ccc;
+		margin-right: 5px;
+
+	}
+	.info_item .secondValue{
+		color: #0082c4;
+		height: 30px;
+		width: 100px;
+		margin-left: 10px
+	}
+	.addRemark,.cancelRemark,.editRemark,.cancelRemarkSed{
+  
+	    float: left;
+	    margin-right: 30px;
+	    color: #fff;
+	    height: 30px;
+	    width: 50px;
+	    cursor: pointer;
+	    line-height: 30px;
+	    padding-left: 10px;
+	    cursor: pointer;
+	    background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+	    letter-spacing: 0.5px;
+	    border-radius: 2px;
+	    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+   }
+   .addRemark,.editRemark{
+   	margin-left: 50px;
+   }
+   .cTeacher{
+    float: left;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+   }
+   .cteach_wrap{
+   	  position: absolute;
+      float: left;
+      left: 70px;
+      top:5px;
+      width: 600px;
+   }
+   .ct_list li{
+    float: left;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+   }
+   .addBatchList{
+   
+	    color: #fff;
+	    height: 40px;
+	    width: 250px;
+	    margin:50px auto;
+	    text-align: center;
+	    cursor: pointer;
+	    border-radius: 3px;
+	    line-height: 40px;
+	    background-image: -webkit-linear-gradient(top, #22a7e0, #1279be);
+	    letter-spacing: 0.5em;
+	  
+	    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+	}
+	.leftTop {
+		left: 0 !important;
+		padding: 0 24px;
+	}
+</style>
+
+<script type="text/x-underscore-template">//put your template here</script>
+<header class="top-title c1 fs24">
+	<h1 class="title textC">
+	</h1>
+	<div class="time leftTop">
+		<img src="../base/img/back.ing" alt="">
+	</div>
+</header>
+<!-- header -->
+<div id="content"></div>
+<!-- footer -->
+<!-- 遮罩层 -->
+<div class="masker"></div>
+<footer class = 'footer-menu'></footer>
+<!--备注-->
+<div class="remark">
+	
+	<div class="info_item">
+		<span class="firstGroup">原组号:</span>
+	</div>
+	<div class="info_item">
+		<span>原机型：</span>
+		<span>A320</span>
+	</div>
+	<div class="info_item">
+		<span>新机型：</span>
+		<div class="info_at">
+			<ul class="at_list">
+				<li>A320</li>
+				<li>A320</li>
+			</ul>
+		</div>
+	</div>
+	<div class="info_item">
+		<span class="secondGroup" >新组号:</span>
+	    <input type="text"  class="secondValue">
+	</div>
+	<div class="info_item">
+		<div class="addRemark">确定</div>
+	    <div class="cancelRemark">取消</div>
+	</div>
+	
+</div>
+<div class="remarkGroup">
+	
+	<div class="info_item">
+		<span class="firstGroup">原组号:</span>
+	</div>
+	<div class="info_item">
+		<span>原机型：</span>
+		<span>A320</span>
+	</div>
+	<div class="info_item">
+		<span>新机型：</span>
+		<div class="info_at">
+			<ul class="at_list">
+				<li>A320</li>
+				<li>A320</li>
+			</ul>
+		</div>
+	</div>
+	<div class="info_item">
+		<span class="secondGroup" >新组号:</span>
+	    <input type="text"  class="secondValue">
+	</div>
+	<div class="info_item">
+		<div class="editRemark">确定</div>
+	    <div class="cancelRemarkSed">取消</div>
+	</div>
+	
+</div>

@@ -1,0 +1,61 @@
+<script id="chooseSubject_template" type="text/x-underscore-template">
+    <div id ="role_wrap">
+
+        <div class="role_choose ">
+            <div class="actype">
+               <span class="sub_n">机型：</span>
+               <%=actype.actype%>
+            </div>
+            <div class="sub_chk">
+                <span class="sub_n">科目选择：</span>
+                <div  class="sub_list">
+                    <ul class="chooseSkill">
+                        <%_.each(actype.subjects,function(subjects_item,subjects_index){
+                        %>
+                        <li data-index=<%=subjects_index%> data-id=<%=subjects_item.subjectId%> data-stuname=<%=subjects_item.subjectName%> > <%=subjects_item.subjectName%> </li>
+                        <%})%>
+                    </ul>
+                </div>
+            </div>
+          
+        </div>
+        <div class="task_list">
+           <h3 class="task_h3">随机抽取任务列表</h3>
+           <div  id=wrapper>
+               <div id="scroller">
+            <%_.each(actype.subjects,function(subjects_item,subjects_index){%>
+                   <div class="task_item" style="display:none;">
+                    <p class="task_title">科目名称：
+                       <span><%=subjects_item.subjectName%></span>
+                    </p>
+                     <div class="task_wrap">
+                     <% _.each(subjects_item.jtas,function(jtas_item,j_index){%>
+                         <%
+                            var jtasstate=jtas_item.random;
+                         
+                            if(jtasstate==0||jtasstate==1){
+
+                               var jtasflag=jtasstate?'多选':'单选';
+                                %>
+                              <div class="jtas_item">
+
+                                <p class="jtas_title"><%=jtas_item.jtaName%>(<%=jtasflag%>)</p>
+                                <ul class="cjta_list" data-subjectId=<%=subjects_item.subjectId%> >
+                                <%_.each(jtas_item.cJtas,function(cJtas_item,c_index){%>
+                                     <li data-cjtaId=<%=cJtas_item.cjtaId%> data-opt=<%=jtasstate%>><%=cJtas_item.cJtaName%></li>
+                                <%})%>
+                                </ul>
+                            </div> 
+                         <%}%>
+                        
+
+                       <%})%>
+                       </div>
+                  </div>
+                <%})%>
+               </div>
+           </div>
+        </div>
+        <div class="startLession">下一步</div>
+    </div>
+</script>

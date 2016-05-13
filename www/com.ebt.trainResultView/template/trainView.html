@@ -1,0 +1,29 @@
+<script id="trainView_template" type="text/x-underscore-template">
+<%
+    if(resultCode === 0 && typeof result !== "undefined" && result !== null && result !== "" && result.length !== 0) {%>
+    	
+      <div class="everyYearGraph">
+      <div class="top">
+         <div class="tab c2 tt" >
+            <div class="tabItem tabActive textC ta" ><%=lang.allyear%></div>
+            
+         </div>
+      </div>
+      <div class="year c1 textC" id="ty">
+          
+      </div>
+     <div class="error fs24 textC" ><%=lang.no_statistical_data%></div>
+      <div class="annualItems" id="annualItems">
+      </div>
+      </div>
+    
+  <%}else{%>
+   
+
+    $(".tip").html(lang.no_training_result_info).show();
+   
+   
+
+
+<%}%>
+  </script>

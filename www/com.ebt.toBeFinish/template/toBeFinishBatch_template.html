@@ -1,0 +1,91 @@
+<script id="toBeFinishBatch_template" type="text/x-underscore-template">
+    <%_.each(result,function(Item,index){console.log(result)%>
+
+    <div class="course">
+        <div class = 'iconCircle c1 fs26'>
+            <%=Item.month%>月
+        </div>
+        <ul class ="refresher">
+            <%_.each(Item.results,function(resultsItem,resultsIndex){%>
+            <%_.each(resultsItem.groups,function(groupsItem,groupsIndex){%>
+            <%_.each(groupsItem.students,function(studentsItem,studentsIndex){%>
+            <li class="course_item" 
+                data-resultsIndex=<%=resultsItem.itemindex%>
+                data-value=<%=resultsItem.trainId%> 
+                data-status=<%=studentsItem.status%> 
+                data-itemIndex=<%=resultsItem.itemindex%>
+                data-groupIndex=<%=groupsIndex%>
+                data-stuindex=<%=studentsIndex%>
+                data-batchId=<%=resultsItem.batchId%>
+                data-groupId=<%=groupsItem.groupsId%>  >
+                <div class="link fs24 c2">
+                    <div class="c_year p textC">
+                        <%=resultsItem.courseYear%><%=resultsItem.courseYearperiod%>
+                    </div>
+                    <div class="c_name" 
+                    data-resultsIndex=<%=resultsItem.itemindex%>
+                data-value=<%=resultsItem.trainId%> 
+                data-status=<%=studentsItem.status%> 
+                data-itemIndex=<%=resultsItem.itemindex%>
+                data-groupIndex=<%=groupsIndex%>
+                data-stuindex=<%=studentsIndex%>
+                data-batchId=<%=resultsItem.batchId%>
+                data-groupId=<%=groupsItem.groupsId%> >
+
+                        <%=resultsItem.courseName%>
+                    </div>
+                    <div class="bg">
+                        <div class="c_time">
+                        <%
+                        var st=studentsItem.startTime;
+                        var stArr=st.split(" ");
+                        var stime=stArr[0].split("-");
+                        var year=stime[0];
+                        var month=stime[1];
+                        var day=stime[2];
+                        var sh=stArr[1].split(":")[0]+":00";
+                        var et=studentsItem.endTime;
+                        var eh=parseInt(stArr[1].split(":")[0])+1+":00";
+                        var time=year+"年"+month+"月"+day+"日 "
+                        var s_etime=sh+"-"+eh;
+                        %>
+                        <%=time%>
+                    </div>
+                    <div class="s_etime">
+                        <%=s_etime%>
+                    </div>
+                    <div class="c_stu">
+                        学员:
+                        <%if(studentsItem.studentName.length>=4){%>
+                            <%=studentsItem.studentName.substr(0,4)%>...(<%=studentsItem.skillName%>)
+                        <%}else{%>
+                            <%=studentsItem.studentName%>(<%=studentsItem.skillName%>)
+                        <%}%>
+                        
+                    </div>
+                    <div class="c_sta">
+                        <span><%=groupsItem.stationName%></span>
+                        
+                    </div>
+
+                        <div class="c_res">
+                            <span><%=groupsItem.actypes.actype%></span>
+                            <span>分组:<%=groupsItem.groupName%></span>
+                            <span><%=resultsItem.trainName%></span>
+                            <img src="../base/img/choose.ing"  class="choose" alt="" data-dagou="dagou">
+                            <img src="../base/img/dagou_grey.ing" class="pass_grey" alt=""  data-dagou="dagou">
+                            <img src="../base/img/dagou.ing" alt="" class="pass_state"
+                                 data-Item="<%=resultsIndex%>"
+                                 data-dagou="dagou">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <%})%>
+            <%})%>
+            <%})%>
+        </ul>
+    </div>
+
+    <%})%>
+     </script>

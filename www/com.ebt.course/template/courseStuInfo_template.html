@@ -1,0 +1,57 @@
+<script id = 'courseStuInfo_template' type = 'text/x-underscore-template'>
+ <header class="top-title c1">
+        <div class="time leftTop">
+		<img src="../base/img/back.ing" alt="">
+		</div>
+
+		<h1 class="title textC fs24">
+		
+		</h1>
+	 </header>
+<div class="content_wrap">
+   <div class="train_place">
+	   
+
+     <span class="train_addr">训练地点：</span>
+     <ul class="train_list">
+        <li>天津客舱乘务员训练基地</li>
+        <li>天津yoho训练基地</li>
+     </ul>
+
+
+   </div>
+   <div class="groups_info">
+	  <span class="edit_groups">
+        本次参训人名单及分组：
+      </span>
+      <span class="total_num">共18人</span>
+      <span class="total_group">分5组</span>
+      <span class="edit_group">编辑分组</span>
+
+   </div>
+   <div class="groups_detail">
+	  <%_.each(result.groups,function(groupItem,index){%>
+			<div class="group_list">
+			   <div class="group_item">
+				  <div class="group_name">
+					  <%=groupItem.groupNo%>(<%=groupItem.students.length%>)
+				  </div>
+				  <div class="group_stu">
+					  <ul class="stu_list">
+					 <% _.each(groupItem.students,function(stus,index){%>
+						   <li>
+							 <%=stus.studentName%>
+						   </li>
+						  <%})%>
+					   </ul>
+				  </div>
+				</div> 
+			</div>
+			
+			<%})%>
+		
+   </div>
+   <div class="begin_course">开始课程</div>
+</div>
+
+</script>

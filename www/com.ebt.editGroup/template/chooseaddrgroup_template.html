@@ -1,0 +1,129 @@
+<script id="chooseaddrgroup_template" type="text/x-underscore-template">
+   
+    <div class="chooseaddr">
+       
+            <span class="ca_title">训练地点：</span>
+            <ul class="ca_items">
+              
+                <%_.each(stationCodes,function(stationCodes_item,stationCodes_index){%>
+                    <li  class="ca_item" data-stationCodes=<%=JSON.stringify(stationCodes_item)%>><%=stationCodes_item.name%></li>
+                <%})%>
+               
+            </ul>
+       
+    </div>
+    <div class="choosegroup">
+         <%if(batchs.groups==undefined||batchs.groups==null){%>
+             <div class="cg_title">
+              
+              <span class="cg_total">本次参训人名单及分组：<i>(共0人，分0组)</i></span>
+
+              <div class="cg_edit">编辑分组</div>
+             </div>
+             <div class="cg_detail">
+            <div id="wrapper">
+            <div id="scroller"> 
+            <ul class="cg_list" >
+               
+            </ul>
+            </div>
+            </div>
+        </div>
+        
+         <%}else{%>
+        <div class="cg_title">
+               <%
+                   var groups=batchs.groups;
+                   var gnumber=groups.length;
+                   var snumber=[];
+                   var count=0;
+                   for(var g=0;g<batchs.groups.length;g++){
+                      if(batchs.groups[g].students){
+                        for(var i=0;i<batchs.groups[g].students.length;i++){
+                          snumber.push(batchs.groups[g].students[i].studentId)
+                        }
+                      }
+                      
+                   }
+                   var nary=snumber.sort();
+                   for(var i=0;i<snumber.length;i++){
+                      if (nary[i]==nary[i+1]){
+                       
+                        nary.splice(i,1)
+                      }
+                    }
+                    console.log(nary)
+                   
+               %>
+              <span class="cg_total">本次参训人名单及分组：<i>(共<%=nary.length%>人，分<%=gnumber%>组)</i></span>
+
+              <div class="cg_edit">编辑分组</div>
+          </div> 
+         <div class="cg_detail">
+            <div id="wrapper">
+            <div id="scroller"> 
+            <ul class="cg_list" >
+                <%_.each(batchs.groups,function(groups_item,groups_index){%>
+               
+                <li>
+                    <div class="bg_item"
+                        data-value=<%=JSON.stringify(groups_item.students)%> 
+                          data-groupId=<%=groups_item.groupId%>
+                          data-status=<%=groups_item.status%>
+                          data-index=<%=groups_index%>
+                          data-groupName=<%=groups_item.groupName%>
+                          data-actype=<%=groups_item.actype%>
+                          <%var count=0;%>
+                          <%var stuCount=0;%>
+                          <%_.each(groups_item.students,function(students_item,students_index){%>
+                              <%stuCount++%>
+                              <%if(students_item.finished==true){count++}%>
+                          <%})%>
+                          data-finishCount=<%=count%>
+                          data-stuCount=<%=stuCount%>
+                          >
+                       <span class="bg_actypes"><%=groups_item.actype%></span>
+                       <%
+                          var bginum=0;
+                          if(groups_item.students){
+                             bginum=groups_item.students.length;
+                           }
+                       %> 
+                       <span class="bg_name" data-actype="<%=groups_item.actype%>" 
+                          >
+                           分组<%=groups_item.groupName%>(共<%=bginum%>人)
+                       </span>
+                       <div class="bg_stuwrap">
+                           <ul class="bg_stulist">
+                                <%_.each(groups_item.students,function(students_item,students_index){
+                                    if(students_item.finished==false){%>
+                                        <li>
+                                          <%=students_item.studentName%>
+                                        </li>
+                                    <%}else{%>
+                                        <li>
+                                          <%=students_item.studentName%>(已打分)
+                                        </li>
+                                        
+                                    <%}%>
+                                    
+                                <%})%>
+                           </ul>
+                       </div>
+                   
+                    </div>
+                </li>
+               
+                <%})%>
+            </ul>
+            </div>
+            </div>
+        </div>
+         
+         <%}%>
+         
+    </div>
+    <div class="startLession">开始课程</div>
+  
+
+</script>

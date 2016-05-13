@@ -1,0 +1,43 @@
+<script id="startCourse_template" type="text/x-underscore-template">
+<div class="content">
+<aside class="sub_aside">
+       <%
+		_.each(["科目列表"],function(role,index){%>				   
+			<div class="sub_title"><h3><%=role%></h3></div>					   
+         <%})%>
+	<ul class="sub_list">
+	   <%
+	      _.each(result.subjects,function(subjectItem,index){%>
+			 <li class="sub_click"><%=subjectItem.subjectName%></li>
+	 <%})%>
+		 
+	</ul>
+</aside>
+   <%
+				     _.each(["任务列表"],function(role,index){%>				   
+					   <div class="jtas_wrap_title"><h3><%=role%></h3></div>					   
+               <%})%>
+ <div class="jtas_wrap"> 
+            
+	   <%
+	      _.each(result.subjects,function(subjectItem,index){
+			 
+	            _.each(subjectItem.jtas,function(jtasItem,index){%>
+
+				   	 <div class="jtas_list">
+						<h3><%=jtasItem.jtaName%></h3>
+						 <ul class="cjt_list">
+							<%_.each(jtasItem.cJtas,function(cjtasItem,c_index){%>
+								
+									<li class="active">
+                                         <div class=""><span><img src="../base/realImg/2_05.png"></span><%=cjtasItem.cJtaName%></div>
+                                         <div class=""><span><img src="../base/realImg/2_05.png"></span><%=cjtasItem.cJtaSubName%></div>
+									 </li>
+								  
+							 <%})%>
+						  </ul>
+					  </div>
+			  <%})%>
+		<%})%>
+</div>	
+</script>

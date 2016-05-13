@@ -1,0 +1,612 @@
+<style type="text/css" media="all">
+.complainDialog {
+	width: 500px;
+	min-height:206px;
+	position: absolute;
+	top: 50%;
+	left:50%;
+	z-index: 99;
+	margin-left:-250px;
+	margin-top:-103px;
+	font-size: 2rem;
+	font-weight: normal;
+	/* background-image: -webkit-linear-gradient(top, #818181, #323332 50%, #212121 51%, #202020); */
+	background-color: #FFFFFF;
+	display: none;
+	border-radius: 10px;
+}
+.searchLabel {
+	position: relative;
+	border-bottom: 2px solid #D0D0D0;
+	height: 50px;
+	line-height: 50px;
+	color: #231A15;
+	display: block;
+}
+
+.confirmBtn,.commitBtn{
+	position: absolute;
+	right:0;
+	top:0;
+	padding: 0 18px;
+	color:#319CD0;
+}
+.searchItem {
+	/* display: -webkit-box; Safari and Chrome
+	display: -ms-flexbox; Internet Explorer 10
+	display: box;
+	-webkit-box-orient: horizontal;
+	height:25px;
+	margin-top:10px; */
+	position: relative;
+	height: 50px;
+	line-height: 50px;
+	margin-left: 18px;
+	border-bottom: 2px solid #D0D0D0;
+}
+.searchItemName{
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #231A15;
+}
+.chooseCourseTime{
+	width:139px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color:#319CD0;
+    padding-right:64px;
+    background-image: url(../base/img/chooseCourseTime.ing);
+    background-repeat: no-repeat;
+    background-position: 160px 12px;
+}
+#courseYear,#courseYearperiod{
+	display: inline-block;
+	color:#319CD0;
+}
+#courseYearperiod{
+	margin-left: 5px;
+}
+#skilledLevel{
+	position: absolute;
+	left: 100px;
+	right: 25px;
+	top:11px;
+	/* border: #329DD1 1px solid; */
+	border-radius: 7px;
+	height: 26px;
+	line-height: 26px !important;
+}
+.skilledLevelItem{
+	width: 117px;
+	display: inline-block;
+	color:#329DD1;
+	border-top:  1px #329DD1 solid;
+	border-bottom: 1px #329DD1 solid;;
+	border-right: 1px #329DD1 solid;
+}
+.skilledLevelItem:first-child{
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	border-left: 1px #329DD1 solid;
+}
+.skilledLevelItem:last-child{
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+.skilledLevelActive{
+	background-color: #329DD1;
+	color:#FFFFFF;
+}
+#courseName{
+	position: absolute;
+	left: 90px;
+	right: 25px;
+	top:11px;
+	height: 26px;
+	color:#329DD1;
+	line-height: 26px;
+	width:357px;
+	box-shadow: none !important;
+}
+.courseName{
+	text-overflow:ellipsis;
+	overflow: hidden;
+	white-space:nowrap;
+	display: block;
+}
+input:-moz-placeholder{
+    color: #DCDEDD !important;
+    font-size: 20px !important;
+    line-height: 26px !important;
+}
+input:-ms-input-placeholder {
+    color: #DCDEDD !important;
+    font-size: 20px !important;
+    line-height: 26px !important;
+}
+input::-webkit-input-placeholder{
+    color: #DCDEDD !important;
+    font-size: 20px !important;
+    line-height: 26px !important;
+}
+.refreLi img{
+	positon:absolute;
+	top: 211px;
+	left: 81%;
+	width:44px;
+	height:44px;
+	background-color:#fff;	
+	border-radius: 8px;
+}
+.contentText{
+	border:1px solid #ccc;
+	color:#000!important;
+	box-shadow: 0 0 0;
+	resize: none;
+	margin:0px 10px;
+	width: 476px;
+	font-size: 2rem;
+	
+}
+.u03_normal{
+	position:absolute;
+	top: 14px;
+	left: 38px;
+	transform:rotate(180deg);
+}
+.wordsTip{
+	position: relative;
+	padding-left: 12px;
+	height: 24px;
+	
+}
+.returnInfoBox{
+	position: relative;
+}
+.noLessonInfoTip {
+	position: absolute;
+	left: 412px;
+	top: 274px;
+	color: #7c7477;
+	display: none;
+}
+.rightTop {
+	/* border: 1px #7F7F7F solid;
+	*/
+	border-right: none;
+	height: 40px;
+	text-align: center;
+	position: absolute;
+	top: 10px;
+	line-height: 40px;
+	padding: 0 9px 0 12px;
+	right: 34px;
+	background: #329DD1;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.triangle-right {
+	position: absolute;
+	right: -15px;
+	top: -1px;
+	width: 0;
+	height: 0;
+	border-top: 21px solid transparent;
+	border-left: 15px solid #329DD1;
+	border-bottom: 21px solid transparent;
+}
+.leftTop {
+	left: 0 !important;
+	padding: 0 24px;
+}
+.leftTop img {
+	margin-top: 18px !important;
+}
+h1 {
+	font-weight: normal !important;
+}
+.stuitem {
+	position: relative;
+}
+.course_aside {
+	bottom: 0 !important;
+	top: 0 !important;
+}
+#subject_wrapper{
+	position: relative;
+	height:573px;
+}
+#subject_scroller{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+}
+
+.allSubject {
+	height: 100%
+}
+.subjectItem{
+	height:100%;
+	position: relative;
+}
+.subjectItem>div{
+	background-color: #FFFFFF;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:100%;
+}
+.subjectTitle {
+	border-bottom: 1px solid #d1d2d4;
+	text-indent: 20px;
+	padding: 15px 0;
+}
+.ratmItem {
+	border-bottom: 1px solid #24a9e1;
+	padding: 15px 0;
+	margin-left: 20px;
+	/* margin-right: 20px;
+	text-indent: 20px;
+	*/
+}
+.ratmItem:last-child{
+	border-bottom:none;
+}
+.course_aside li .active {
+	color: #DF8E1B !important;
+}
+.sequence {
+	position: relative;
+	height: 100%
+}
+
+.sub_aside{
+  width:25%;
+  float:left;
+  height: 100%;
+   box-sizing:border-box;
+ -moz-box-sizing:border-box; 
+ -webkit-box-sizing:border-box; 
+ border-right: 1px solid #ccc;
+  
+
+}
+.sub_list li{
+	height: 60px;
+	line-height: 60px;
+	padding-left: 10px;
+	border-bottom:1px solid #ccc; 
+	font-size: 2.4rem;
+	background: #fff;
+}
+.sub_list li:hover{
+	cursor: pointer;
+
+}
+.sub_list li span{
+	margin-right: 5px;
+}
+.content .jtas_wrap{
+  width:75%;
+  float:left;
+ 
+ position: relative;
+ height: 400px;
+
+}
+.jtas_list{
+	margin-bottom: 15px;
+}
+.jtas_list h3{
+	
+	line-height: 40px;
+	border-bottom:1px solid #ccc;
+	padding-left: 20px;
+	font-weight: normal;
+	font-size: 2rem;
+	
+	overflow: hidden;
+}
+.tag{
+    float:right;
+    width: 400px;
+    position: relative;
+    height: 40px;
+}
+.edit,.detail,.average{
+	position: absolute;
+	top:0px;
+	
+}
+.edit,.detail{
+	top:12px;
+}
+
+.edit{
+	left:12px;
+}
+.detail{
+	left:60px;
+}
+.average{
+	left:230px;
+}
+.complain{
+	top:4px;
+	width: 32px;
+	height: 32px;
+	overflow:hidden;
+
+}
+.cjt_list{
+	margin-left: 10px;
+	margin-top:10px;
+}
+.cjt_list li{
+	line-height: 48px;
+	
+	border:1px solid #999;
+	margin-top: -1px;
+	padding-left: 25px;
+	position: relative;
+	background: url("../base/img/detail.png") no-repeat 5px 16px;
+	font-size: 1.9rem;
+	font-weight: normal;
+	overflow: hidden;
+
+}
+
+.sub_title{
+	height: 40px;
+	font-size: 2.1rem;
+	border-bottom: 1px solid #ccc;
+	font-weight: normal !important;
+	text-align: center;
+	line-height: 40px;
+	
+	background: #fff;
+	
+}
+.jt_title{
+  height: 40px;
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+ 
+}
+.jt_st,.jt_sa{
+	position: absolute;
+	top:0px;
+	font-size: 2.1rem;
+	line-height: 40px;
+	left: 50px;
+
+}
+.jt_sa{
+	
+	left: 550px;
+	
+
+}
+.complainDialog h3{
+	margin:5px 10px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 2rem;
+	font-weight: normal;
+	
+
+	
+}
+.btn_wrap{
+	position: relative;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 18px;
+    border-bottom: 2px solid #D0D0D0;
+}
+
+.cancelBtn{
+	    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 18px;
+    color: #319CD0;
+}
+.subBtn{
+	position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 18px;
+    color: #319CD0;
+}
+div[id^="wrapper"]{
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+}
+#scroller {
+    position: absolute;
+    top: 4px;
+    z-index: 1;
+    width: 100%;
+}
+select.s_score{
+     float:right;
+     margin-top: 12px;
+    margin-right: 100px;
+    width: 100px;
+    color: #000;
+}
+.c_score{
+    float:right;
+
+    margin-right: 100px;
+    width: 100px;
+    color: #000;
+}
+.sub_list  .sub_active{
+    background: url('../base/realImg/editCousre.png') repeat-x;
+    color: #fff;
+}
+.stuname {
+    margin-left: 50px;
+}
+.wrap{
+	background: transparent;
+    height: 648px;
+    width: 100%;
+    padding: 0;
+    position: relative;
+}
+.content{
+	background: transparent;
+    height: 608px;
+    width: 100%;
+    padding: 0;
+    position: relative;
+}
+.stu_wrap{
+  overflow: hidden;
+  
+  background: #fff;
+}
+
+.stulist li{
+  float: left;
+  height: 40px;
+  line-height:40px; 
+  text-align: center;
+  font-size: 2rem;
+ padding: 0 15px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+ color: #fff;
+ background: #329DD1;
+
+}
+.stulist li.active{
+	 background: url('../base/realImg/editCousre.png') repeat-x;
+    color: #fff;
+}
+.otheritem{
+	line-height: 48px;
+   margin-left: 10px;
+    border: 1px solid #999;
+    margin-top: -1px;
+    padding-left: 25px;
+    position: relative;
+   
+    font-size: 1.9rem;
+    font-weight: normal;
+    overflow: hidden;
+}
+.otherpad{
+	padding-right: 200px;
+	box-sizing:border-box;
+	-wekit-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+}
+.editinfo,.delinfo,.addinfo{
+	position: absolute;
+	top:8px;
+	right: 160px;
+}
+.delinfo{
+  right:125px;
+}
+.addinfo{
+	top:0px;
+right: 30px;
+font-size: 1.5rem;
+}
+.othername{
+   float:left;
+   width: 15%;
+
+}
+.othercontent{
+   float:left;
+   width: 85%;
+   height: 48px;
+   overflow: hidden;
+
+}
+.txtcommon{
+	margin-top: 4px;
+   height: 40px;
+   resize:none;
+   color: #000;
+}
+.content .other_wrap{
+	position:absolute;
+	bottom: 50px;
+	left: 25%;
+	height: auto;
+	width: 75%;
+}
+.btnwrap{
+	height: 40px;
+	position:absolute;
+	bottom: 40px;
+	left: 25%;
+	
+	width: 75%;
+}
+.w{
+	position: relative;
+}
+.save,.sub,.backclist{
+   position:absolute; 
+   width: 100px;
+   height: 38px;
+   top:0px;
+   left: 300px; 
+   cursor: pointer;
+   font-size: 2.4rem;
+   background: #329DD1;
+   text-align: center;
+   color: #fff;
+   border-radius: 5px;
+
+}
+.sub{
+ left: 500px; 
+}
+.backclist{
+   width: 200px;
+   left: 400px;
+   display: none; 
+}
+</style>
+
+<script type="text/x-underscore-template">//put your template here</script>
+
+<!-- header -->
+<div id="content"></div>
+
+
+<!--申诉弹出框-->
+<div class="complainDialog">
+	<h3><%=lang.other%></h3>
+	<div class="complainInfo">
+		<textarea class='fs20 contentText' placeholder="......" rows = '7' cols ='20' maxlength = '1000'/>
+	</div>
+
+	<div class="btn_wrap">
+	    <span class="subBtn"><%=lang.commit%></span>
+        <span class="cancelBtn"><%=lang.cancel%></span>
+	</div>
+</div>
+<!-- footer -->
+<footer class = 'footer-menu'></footer>
+<div class="masker"></div>

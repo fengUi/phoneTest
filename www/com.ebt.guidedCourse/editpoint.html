@@ -1,0 +1,548 @@
+<style type="text/css" media="all">
+/*put your style here*/
+	h1{
+		font-weight: normal;
+	}
+	.time{
+		margin-left: 62px !important;
+	}
+	/* #content{
+        position:relative;
+        height:708px;
+    } */
+	.iconBar{
+		position: absolute;
+		top: 24px;
+		bottom: 0;
+		width: 14px;
+		background: #E89216;
+		left: 66px;
+		margin-left: -3px;
+		height:auto!important;
+	}
+	.iconCircle{
+		background-image: url(../base/img/time_base.ing);
+		background-repeat: no-repeat;
+		/*position: absolute;*/
+		/*left: 48px;*/
+		/*width: 84px;*/
+		/*height: 92px;*/
+		color: #fff;
+		border-radius: 50px;
+		margin: -13px 0 0 -20px;
+		line-height: 85px;
+		text-align: center;
+		top:14px;
+	}
+	.course{
+		/* 	position:absolute;
+        top:0; */
+		padding: 0 20px 0 172px;
+		margin: 0 auto;
+		height:auto;
+		overflow: hidden;
+		position: relative;
+	}
+	.refresher{
+		height:auto;
+		float:left;
+		width:100%;
+	}
+	.course_item{
+		background: #FFFFFF;
+		width: 46%;
+		height: 304px;
+		float: left;
+		margin: 1px 1.5% 25px 1.5%;
+		-webkit-box-sizing: border-box;
+		position: relative;
+		border-radius: 10px;
+		-webkit-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.2);
+		-moz-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.2);
+		box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.2);
+		border-top: 2px solid rgba(0,0,0,0.2);
+		border-left: 2px solid rgba(0,0,0,0.2);
+	}
+
+	header>img{
+		position:absolute;
+		top: 0px;
+		left: 0px;
+		padding: 18px 24px;
+	}
+	.aside{
+		width: 154px;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		background-image: url(../base/img/shadow.ing);
+		background-repeat: no-repeat;
+		background-position: right center;
+	}
+	#wrapper {
+		position: absolute;
+		top: 15px;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: auto;
+	}
+	#scroller{
+		position: absolute;
+		top: 10px;
+		z-index: 1;
+		width: 100%;
+	}
+	.link{
+		width:100%;
+		height:33%;
+		margin-top:10px;
+	}
+	.TlineTop{
+		border-top:1px solid #dfdfdf;
+	}
+	.TlineBtm{
+		border-bottom:1px solid #dfdfdf;
+	}
+	.link p{
+		height:50px;
+		line-height:60px;
+	}
+	.p{
+		margin:0 40px;
+	}
+	.courseInfo{
+		width:100%;
+		height:64%;
+		background: -webkit-linear-gradient(top, #36aae0 0%,#056592 100%);
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+		padding-top:15px;
+		position: relative;
+		padding: 0 20px;
+		-webkit-box-sizing:border-box;
+	}
+	.courseInfo p{
+		height: 24%;
+		line-height: 43px;
+	}
+	.pfAndPnf p {
+		width: 170px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.pfAndPnf p:first-child {
+	}
+	.pfAndPnf p:last-child {
+		text-align: right;
+	}
+	.new_bg{
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 0;
+		height: 0;
+		border-left: 80px solid transparent;
+		border-bottom: 80px solid transparent;
+		border-top: 80px solid #19D337;
+		border-top-right-radius: 10px;
+		z-index: 1;
+	}
+	.new_replace {
+		position: absolute;
+		right: -80px;
+		top: -80px;
+		width: 0;
+		height: 0;
+		border-top: 80px solid transparent;
+		border-right: 80px solid transparent;
+		border-left: 80px solid #FFFFFF;
+	}
+	.passed{
+		position: absolute;
+		top: 15px;
+		right: 3px;
+		transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		z-index: 3;
+	}
+	.content{
+		position: absolute;
+		top: 60px;
+		height: auto !important;
+		width: auto !important;
+		z-index: 0;
+	}
+	/*搜索框*/
+	.searchDailog {
+		width: 500px;
+		height:206px;
+		position: absolute;
+		top: 50%;
+		left:50%;
+		z-index: 99;
+		margin-left:-250px;
+		margin-top:-103px;
+		/* background-image: -webkit-linear-gradient(top, #818181, #323332 50%, #212121 51%, #202020); */
+		background-color: #FFFFFF;
+		display: none;
+		border-radius: 10px;
+	}
+	.searchLabel {
+		position: relative;
+		border-bottom: 2px solid #D0D0D0;
+		height: 50px;
+		line-height: 50px;
+		color: #231A15;
+		display: block;
+	}
+	.cancelBtn{
+		position: absolute;
+		left:0;
+		top: 0;
+		padding: 0 18px;
+		color:#319CD0;
+	}
+	.confirmBtn{
+		position: absolute;
+		right:0;
+		top:0;
+		padding: 0 18px;
+		color:#319CD0;
+	}
+	.searchItem {
+		/* display: -webkit-box; Safari and Chrome
+        display: -ms-flexbox; Internet Explorer 10
+        display: box;
+        -webkit-box-orient: horizontal;
+        height:25px;
+        margin-top:10px; */
+		position: relative;
+		height: 50px;
+		line-height: 50px;
+		margin-left: 18px;
+		border-bottom: 2px solid #D0D0D0;
+	}
+	.searchItemName{
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: #231A15;
+	}
+	.chooseCourseTime{
+		width:139px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		color:#319CD0;
+		padding-right:64px;
+		background-image: url(../base/img/chooseCourseTime.ing);
+		background-repeat: no-repeat;
+		background-position: 160px 12px;
+	}
+	#courseYear,#courseYearperiod{
+		display: inline-block;
+		color:#319CD0;
+	}
+	#courseYearperiod{
+		margin-left: 5px;
+	}
+	#skilledLevel{
+		position: absolute;
+		left: 100px;
+		right: 25px;
+		top:11px;
+		/* border: #329DD1 1px solid; */
+		border-radius: 7px;
+		height: 26px;
+		line-height: 26px !important;
+	}
+	.skilledLevelItem{
+		width: 117px;
+		display: inline-block;
+		color:#329DD1;
+		border-top:  1px #329DD1 solid;
+		border-bottom: 1px #329DD1 solid;;
+		border-right: 1px #329DD1 solid;
+	}
+	.trainingPlaceLf{
+		display: inline-block;
+	}
+	.PlaceLfbg{
+		background: #76aae2;
+		padding: 5px 15px;
+	}
+	.pradff{
+		border-right: 2px solid #fff;
+		margin: 0 -5px 0 24px;
+	}
+	.skilledLevelItem:first-child,.prad,.editList li:first-child{
+		border-top-left-radius: 7px;
+		border-bottom-left-radius: 7px;
+		border-left: 1px #329DD1 solid;
+	}
+	.skilledLevelItem:last-child,.PlaceLfbg:last-child,.editList li:last-child{
+		border-top-right-radius: 7px;
+		border-bottom-right-radius: 7px;
+	}
+	.skilledLevelActive{
+		background-color: #329DD1;
+		color:#FFFFFF;
+	}
+	#courseName{
+		position: absolute;
+		left: 90px;
+		right: 25px;
+		top:11px;
+		height: 26px;
+		color:#329DD1;
+		line-height: 26px;
+		width:357px;
+		box-shadow: none !important;
+	}
+	.courseName{
+		text-overflow:ellipsis;
+		overflow: hidden;
+		white-space:nowrap;
+		display: block;
+	}
+	input::-webkit-input-placeholder{
+		color: #DCDEDD !important;
+		font-size: 20px !important;
+		line-height: 26px !important;
+	}
+	.courseYear,.courseName{
+		position:relative;z-index:4;
+	}
+	.editNav div{
+		display: block;
+		float: left;
+	}
+	.editNavLt{
+		width: 18.76%;
+        min-width: 95px;
+	}
+	.sub_aside {
+    width: 20%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    z-index: 999;
+}
+.sub_list li.active{
+	background: url('../base/realImg/editCousre.png') repeat-x;
+}
+.sub_list li{
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+}
+.editNav{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 39px !important;
+    line-height: 39px;
+    border-bottom: 1px solid #ccc;
+    padding-left: 15px;
+    background: #fff;
+   z-index: 9999;
+}
+.editNavMd1{
+	width: 30%;
+    padding-left: 10px;
+}
+.jtas_wrap{
+    width: 79.4%;
+    position: absolute;
+    left: 20.1%;
+    border-left: 1px solid #ccc;
+    top: 100px;
+    background: #fff;
+}
+.jtas_nav{
+	border-bottom: 1px solid #ccc;
+	height: 35px;
+	line-height: 35px;
+}
+.jtas_nav span,.jtas_md li span{
+	display: inline-block;
+}
+.jtas_icon1{
+	background: url('../base/realImg/2_03.png') no-repeat center center;
+}
+.jtas_icon2{
+	background: url('../base/realImg/2_04.png') no-repeat center center;
+}
+.jtas_icon3{
+	background: url('../base/realImg/2_05.png') no-repeat center center;
+}
+
+.jtas_icon1,.jtas_icon2,.jtas_icon3,.jtas_btm5_icon1,.jtas_btm5_icon2{
+	width: 24px;
+	height: 15px;
+	background-size: 20px;
+}
+.jtas_md{
+	padding: 10px;
+}
+.jtas_md ul li{
+	border: 1px solid #acacac;
+	height: 35px;
+	line-height: 35px;
+	padding: 0 10px;
+}
+.jtas_txt{
+	width: 60%;
+}
+.jtas_nav_txt1{
+	width: 30%;
+	padding-left: 10px;
+}
+.jtas_nav_txt2{
+	width: 29%;
+}
+#coureScore{
+	position: fixed;
+	z-index: 9999;
+}
+.Fter{
+	background: #fefefe;
+	height: 60px;
+	line-height:60px;
+	text-align: center;
+	width: 100%; 
+	position: fixed;
+	bottom: 0;
+}
+.Fter div{
+	display: inline-block;
+	border-radius: 7px;
+	background: #76a8e0;
+	width: 66px;
+	height: 35px;
+	line-height: 35px;
+	padding: 2px 10px;
+	color: #fff;
+}
+.Fter .stag{
+	margin-right: 20px;
+}
+.jtas_btm{
+	padding: 10px;
+}
+.jtas_btm span{
+	display: inline-block;
+}
+.jtas_btm5 span{
+	float: left;
+}
+.jtas_btm textarea{
+	padding: 10px;
+	width: 96%;
+	border:1px solid #acacac;
+	border-radius: 0;
+	color: #242424;
+	line-height: 25px;
+}
+.jtas_btm5{
+	padding: 10px;
+    height: 80px;
+}
+.jtas_btm5_span5{
+	width: 90%;
+}
+.jtas_btm5_span4{
+	color: #2342fc;
+	text-decoration: underline;
+}
+.jtas_btm5_icon1{
+	background: url('../base/realImg/2_06.png') no-repeat center center;
+	background-size: 20px;
+}
+.jtas_btm5_icon2{
+	background: url('../base/realImg/2_07.png') no-repeat center center;
+	background-size: 20px;
+}
+.editList{
+	position:absolute;
+	z-index: 9999999;
+	height: 40px !important;
+	width: 100%;
+	padding: 10px;
+	background: #fff;
+}
+.editList li{
+	background: #76aae2;
+	width: 21%;
+	height: 56px;
+	line-height: 56px;
+	color: #fff;
+	float: left;
+	border-right: 1px solid #fff;
+}
+.editList .spanOne{
+	background: url('../base/realImg/2_08.png') no-repeat center center;
+}
+.editList .spanTwo{
+	background: url('../base/realImg/2_09.png') no-repeat center center;
+}
+.editList .spanOne,.editList .spanTwo{
+	width: 31px;
+	height: 32px;
+	margin: 5px 5px 0 2px;
+	float: left;
+}
+.editList .active{
+	background:url('../base/realImg/editCousre.png') repeat-x center center;
+	background-size: 32px;
+}
+.editList .active:first-child{
+	background:url('../base/realImg/editCousre.png') repeat-x center center;
+	background-size: 32px;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	border-left: 1px #329DD1 solid;
+}
+.editList .active:last-child{
+	background:url('../base/realImg/editCousre.png') repeat-x center center;
+	background-size: 32px;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+	border-left: 1px #329DD1 solid;
+}
+.sub_list li.tActive{
+	background: url('../base/realImg/editCousre.png') repeat-x;
+	background-size: 40px;
+	color: #fff;
+}
+</style>
+
+<script type="text/x-underscore-template">
+//put your template here
+</script>
+
+<!-- header -->
+<header class="top-title c1 fs24" id="coureScore">
+	<img src = '../base/img/back.ing'>
+	<div class="time leftTop fs20" id = "showTime"></div>
+	<h1 class="title textC">2014上半年</h1>
+</header>
+
+
+<!-- content -->
+<div id="content">
+   
+</div>
+ <footer class="Fter">
+     	<div class="stag">暂存</div>
+     	<div class="endofCourse">提交</div>
+</footer> 
